@@ -1,0 +1,3761 @@
+/* ============================================================
+   Wander Cabs — custom styles (layered over Tailwind CDN)
+   Theme: travel — blues, whites, greens
+   ============================================================ */
+
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+/* offset sticky navbar for anchor jumps */
+
+
+
+
+
+
+
+
+
+/* ---- Navbar ---- */
+
+/* ===== PREMIUM TRAVEL NAVBAR ===== */
+
+#navbar {
+  padding: .7rem 1.25rem;
+  transition: .4s ease;
+}
+
+#navbar nav {
+  position: relative;
+  min-height: 4.2rem;
+  padding: .55rem .8rem;
+  border-radius: 999px;
+
+ background: rgba(255, 255, 255, .07);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, .22);
+
+  box-shadow:
+    0 12px 35px rgba(2, 6, 23, .28),
+    inset 0 1px 0 rgba(255, 255, 255, .18);
+
+  transition: .4s ease;
+}
+
+#navbar nav::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, .18),
+    rgba(255, 255, 255, .04),
+    rgba(255, 255, 255, .12)
+  );
+
+  z-index: -1;
+  opacity: .8;
+}
+
+/* ===== GURUDEV TRAVELS LOGO ===== */
+
+#navbar .logo-text {
+  font-weight: 800;
+  letter-spacing: .01em;
+  color: #fff;
+
+  text-shadow:
+    0 2px 8px rgba(2, 6, 23, .55);
+
+  transition: .4s ease;
+}
+
+#navbar .logo-text:hover {
+  color: #facc15;
+
+  text-shadow:
+    0 0 8px rgba(250, 204, 21, .7),
+    0 0 18px rgba(250, 204, 21, .35);
+}
+
+
+/* ===== NAV LINKS ===== */
+
+#navbar .nav-link {
+  position: relative;
+
+  padding: .6rem 1rem;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: .9rem;
+
+  color: #fff;
+
+  background: transparent;
+  border: 1px solid transparent;
+
+  transition:
+    color .3s ease,
+    background .3s ease,
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+
+/* Small GOLD indicator */
+
+#navbar .nav-link::before {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #facc15;
+
+  transform: translateX(-50%) scale(0);
+
+  box-shadow: 0 0 10px #facc15;
+
+  transition: .3s ease;
+}
+
+
+/* Hover */
+
+#navbar .nav-link:hover {
+  color: #facc15;
+
+  background: rgba(255, 255, 255, .10);
+
+  border-color: rgba(250, 204, 21, .45);
+
+  backdrop-filter: blur(10px);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(2, 6, 23, .18),
+    inset 0 0 12px rgba(250, 204, 21, .06);
+}
+
+
+/* Gold dot appears */
+
+#navbar .nav-link:hover::before {
+  transform: translateX(-50%) scale(1);
+}
+
+
+/* ===== HERO NAVBAR ===== */
+
+#navbar .nav-on-hero {
+  color: #fff;
+  background: transparent;
+}
+
+#navbar .nav-on-hero:hover {
+  color: #facc15;
+  background: rgba(255, 255, 255, .10);
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 767px) {
+
+  #navbar {
+    padding: .55rem .7rem;
+  }
+
+  #navbar nav {
+    min-height: 3.8rem;
+    padding: .45rem .6rem;
+    border-radius: 1.25rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- Form controls ---- */
+.form-label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  margin-bottom: .35rem;
+  color: rgb(71 85 105);
+}
+
+.dark .form-label {
+  color: rgb(148 163 184);
+}
+
+.form-input {
+  width: 100%;
+  border-radius: .85rem;
+  border: 1px solid rgb(226 232 240);
+  background: rgb(248 250 252);
+  padding: .7rem .9rem;
+  font-size: .95rem;
+  color: inherit;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.dark .form-input {
+  border-color: rgb(51 65 85);
+  background: rgb(15 23 42);
+}
+
+.form-input::placeholder {
+  color: rgb(148 163 184);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgb(59 155 246);
+  box-shadow: 0 0 0 4px rgba(59, 155, 246, .18);
+  background: #fff;
+}
+
+.dark .form-input:focus {
+  background: rgb(2 6 23);
+}
+
+/* ---- Date fields: make From/To clearly visible ---- */
+.date-input {
+  min-height: 3rem;
+  color-scheme: light;
+  /* renders a visible dark calendar icon on light bg */
+  font-weight: 600;
+  color: rgb(30 41 59);
+}
+
+.dark .date-input {
+  color-scheme: dark;
+  color: rgb(226 232 240);
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: .15rem .1rem;
+}
+
+.date-input::-webkit-datetime-edit {
+  padding: .1rem 0;
+}
+
+/* ---- Map "pick on map" button ---- */
+.map-pick-btn {
+  flex-shrink: 0;
+  width: 3rem;
+  border-radius: .85rem;
+  font-size: 1.15rem;
+  border: 1px solid rgb(226 232 240);
+  background: rgb(248 250 252);
+  transition: background .2s, border-color .2s;
+  cursor: pointer;
+}
+
+.map-pick-btn:hover {
+  background: rgb(219 238 254);
+  border-color: rgb(96 184 250);
+}
+
+.dark .map-pick-btn {
+  border-color: rgb(51 65 85);
+  background: rgb(15 23 42);
+}
+
+.dark .map-pick-btn:hover {
+  background: rgb(30 41 59);
+}
+
+/* ---- Map picker canvas (Leaflet) ---- */
+.map-canvas {
+  width: 100%;
+  height: min(45vh, 420px);
+  background: rgb(226 232 240);
+  z-index: 0;
+}
+
+.dark .map-canvas {
+  background: rgb(30 41 59);
+}
+
+.leaflet-container {
+  font-family: Inter, system-ui, sans-serif;
+  border-radius: .75rem;
+}
+
+/* ---- Map search results dropdown (Nominatim) ---- */
+.map-results {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + .25rem);
+  z-index: 20;
+  max-height: 14rem;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: .25rem;
+  border-radius: .85rem;
+  background: #fff;
+  border: 1px solid rgb(226 232 240);
+  box-shadow: 0 18px 40px -18px rgba(2, 6, 23, .4);
+}
+
+.dark .map-results {
+  background: rgb(15 23 42);
+  border-color: rgb(51 65 85);
+}
+
+.map-results li {
+  padding: .55rem .65rem;
+  border-radius: .6rem;
+  font-size: .85rem;
+  cursor: pointer;
+}
+
+.map-results li:hover {
+  background: rgb(241 245 249);
+}
+
+.dark .map-results li {
+  color: rgb(203 213 225);
+}
+
+.dark .map-results li:hover {
+  background: rgb(30 41 59);
+}
+
+/* ---- Feature cards ---- */
+.feature-card {
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid rgb(241 245 249);
+  box-shadow: 0 10px 30px -18px rgba(2, 6, 23, .25);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.dark .feature-card {
+  background: rgb(15 23 42);
+  border-color: rgb(30 41 59);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -24px rgba(36, 128, 235, .45);
+}
+
+.feature-icon {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: .9rem;
+  font-size: 1.4rem;
+  margin-bottom: .85rem;
+  background: linear-gradient(135deg, rgba(36, 128, 235, .14), rgba(22, 160, 107, .14));
+}
+
+/* ---- Car cards ---- */
+.car-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgb(241 245 249);
+  box-shadow: 0 10px 30px -18px rgba(2, 6, 23, .25);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.dark .car-card {
+  background: rgb(15 23 42);
+  border-color: rgb(30 41 59);
+}
+
+.car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 55px -24px rgba(36, 128, 235, .5);
+}
+
+/* Car image: fixed height, cover. Missing image -> 🚙 placeholder (never looks broken). */
+.car-img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  background: #e2e8f0;
+}
+
+.dark .car-img {
+  background: rgb(30 41 59);
+}
+
+.car-img.img-fallback {
+  position: relative;
+  background: linear-gradient(135deg, rgba(36, 128, 235, .16), rgba(22, 160, 107, .18));
+}
+
+.car-img.img-fallback::after {
+  content: "🚙";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 4rem;
+}
+
+.spec {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .8rem;
+  color: rgb(100 116 139);
+}
+
+.dark .spec {
+  color: rgb(148 163 184);
+}
+
+/* ---- Spinner ---- */
+.spinner {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2.5px solid rgba(255, 255, 255, .45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Modals ---- */
+.modal-pop {
+  animation: pop .35s cubic-bezier(.2, .9, .3, 1.3);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(.85) translateY(10px)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0)
+  }
+}
+
+.checkmark-circle {
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: draw .5s ease forwards;
+}
+
+.checkmark-check {
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw .35s .45s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Google Places autocomplete dropdown ---- */
+.pac-container {
+  border-radius: .85rem;
+  margin-top: .25rem;
+  box-shadow: 0 18px 40px -18px rgba(2, 6, 23, .4);
+  border: 1px solid rgb(226 232 240);
+  font-family: Inter, system-ui, sans-serif;
+  z-index: 60;
+}
+
+.dark .pac-container {
+  background: rgb(15 23 42);
+  border-color: rgb(51 65 85);
+}
+
+.dark .pac-item {
+  color: rgb(203 213 225);
+  border-color: rgb(30 41 59);
+}
+
+.dark .pac-item:hover {
+  background: rgb(30 41 59);
+}
+
+.dark .pac-item-query {
+  color: rgb(226 232 240);
+}
+
+.dark .pac-matched {
+  color: #fff;
+}
+
+/* ============================================================
+   Hero / template look
+   ============================================================ */
+
+/* Navbar: transparent over hero, solid once scrolled (toggled by JS via .nav-scrolled) */
+#navbar.nav-scrolled {
+  background: rgba(255, 255, 255, .85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgb(226 232 240);
+}
+
+.dark #navbar.nav-scrolled {
+  background: rgba(2, 6, 23, .8);
+  border-bottom-color: rgb(30 41 59);
+}
+
+#navbar.nav-scrolled .nav-on-hero,
+#navbar.nav-scrolled .nav__logo,
+#navbar.nav-scrolled a.font-extrabold {
+  color: rgb(30 41 59);
+}
+
+.dark #navbar.nav-scrolled .nav-on-hero,
+.dark #navbar.nav-scrolled a.font-extrabold {
+  color: rgb(226 232 240);
+}
+
+#navbar.nav-scrolled #themeToggle {
+  color: rgb(71 85 105);
+  border-color: rgb(226 232 240);
+}
+
+.dark #navbar.nav-scrolled #themeToggle {
+  color: rgb(203 213 225);
+  border-color: rgb(51 65 85);
+}
+
+.nav-on-hero {
+  color: #fff;
+}
+
+.nav-on-hero:hover {
+  background: transparent;
+  color: #facc15;
+}
+
+/* Hero */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(120deg, rgba(2, 6, 23, .6), rgba(2, 6, 23, .38) 55%, rgba(2, 6, 23, .18));
+}
+
+.hero-grad {
+  background: linear-gradient(120deg, #0b3a6b 0%, #0a8056 100%);
+}
+
+/* Extra legibility for hero copy sitting on busy photography. */
+.hero-copy-shadow {
+  text-shadow: 0 4px 24px rgba(2, 6, 23, .85), 0 2px 6px rgba(2, 6, 23, .95), 0 1px 0 rgba(2, 6, 23, 1);
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PREMIUM HERO TITLE
+   ========================================================= */
+
+.hero-title {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+
+  text-align: center;
+
+  color: #fff;
+
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+
+  text-shadow:
+    0 5px 25px rgba(2, 6, 23, .85),
+    0 2px 8px rgba(2, 6, 23, .95);
+}
+
+/* First line */
+
+.hero-title-main {
+  display: block;
+
+  font-size: clamp(
+    2.8rem,
+    5.5vw,
+    5.8rem
+  );
+}
+
+/* Second line */
+
+.hero-title-sub {
+  display: block;
+
+  margin-top: .15em;
+
+  font-size: clamp(
+    2.5rem,
+    5vw,
+    5.3rem
+  );
+}
+
+/* Your Journey */
+
+.hero-title-highlight {
+  position: relative;
+
+  display: inline-block;
+
+  margin-left: .12em;
+
+  color: #facc15;
+
+  font-family:
+    Georgia,
+    'Times New Roman',
+    serif;
+
+  font-style: italic;
+
+  font-weight: 700;
+
+  letter-spacing: -.025em;
+
+  text-shadow:
+    0 3px 15px rgba(250, 204, 21, .35),
+    0 3px 8px rgba(2, 6, 23, .8);
+}
+
+/* Premium underline */
+
+.hero-title-highlight::after {
+  content: "";
+
+  position: absolute;
+
+  left: 4%;
+  right: -3%;
+  bottom: -.12em;
+
+  height: .09em;
+
+  min-height: 4px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #facc15 18%,
+    #fbbf24 50%,
+    #fb923c 82%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 2px 10px rgba(250, 204, 21, .35);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1023px) {
+
+  .hero-title {
+    max-width: 850px;
+    padding-inline: 1.25rem;
+  }
+
+  .hero-title-main {
+    font-size: clamp(
+      2.6rem,
+      6vw,
+      4.5rem
+    );
+  }
+
+  .hero-title-sub {
+    font-size: clamp(
+      2.3rem,
+      5.5vw,
+      4.2rem
+    );
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero-title {
+    max-width: 100%;
+    padding-inline: 1rem;
+
+    margin-top: 1rem;
+
+    line-height: 1.08;
+  }
+
+  .hero-title-main {
+    font-size: clamp(
+      2.1rem,
+      10vw,
+      3rem
+    );
+  }
+
+  .hero-title-sub {
+    margin-top: .2em;
+
+    font-size: clamp(
+      1.95rem,
+      9vw,
+      2.7rem
+    );
+  }
+
+  .hero-title-highlight {
+    margin-left: .08em;
+  }
+
+  .hero-title-highlight::after {
+    bottom: -.14em;
+    height: 3px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   HERO SOCIAL ICONS
+   Visible on Desktop / Laptop / Tablet / Mobile
+   ========================================================= */
+
+.hero-social {
+  position: absolute;
+
+  left: 1.25rem;
+  bottom: 6rem;
+
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: .75rem;
+}
+
+
+/* WhatsApp / Instagram buttons */
+
+.hero-social-link {
+  display: grid;
+  place-items: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  flex: 0 0 auto;
+
+  border-radius: .75rem;
+
+  color: #fff;
+
+  background: rgba(255, 255, 255, .12);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, .2);
+
+  box-shadow:
+    0 6px 18px rgba(2, 6, 23, .20);
+
+  transition:
+    background .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+
+/* Hover */
+
+.hero-social-link:hover {
+  background: rgba(255, 255, 255, .25);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 22px rgba(2, 6, 23, .3);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1023px) {
+
+  .hero-social {
+    left: 1rem;
+    bottom: 5.5rem;
+
+    gap: .6rem;
+  }
+
+  .hero-social-link {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero-social {
+    left: .75rem;
+    bottom: 6.5rem;
+
+    gap: .5rem;
+  }
+
+  .hero-social-link {
+    width: 2.2rem;
+    height: 2.2rem;
+
+    border-radius: .65rem;
+
+    font-size: .9rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .hero-social {
+    left: .6rem;
+    bottom: 6rem;
+  }
+
+  .hero-social-link {
+    width: 2rem;
+    height: 2rem;
+
+    font-size: .8rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   HERO INFO CARD
+   Visible on Desktop, Laptop, Tablet and Mobile
+   ========================================================= */
+
+.hero-info {
+  position: absolute;
+
+  right: 1.25rem;
+  bottom: 1.5rem;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: .85rem 1rem;
+
+  border-radius: 1.25rem;
+
+  background: rgba(255, 255, 255, .12);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, .2);
+
+  box-shadow:
+    0 10px 30px rgba(2, 6, 23, .20);
+
+  max-width: calc(100% - 2rem);
+}
+
+
+/* Text inside card */
+
+.hero-info > div {
+  min-width: 0;
+}
+
+.hero-info span {
+  display: block;
+
+  color: #fff;
+
+  font-size: .9rem;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+}
+
+.hero-info a {
+  display: inline-block;
+
+  margin-top: .2rem;
+
+  font-size: .8rem;
+
+  white-space: nowrap;
+}
+
+
+/* Car image */
+
+.hero-info-img {
+  display: block;
+
+  flex: 0 0 auto;
+
+  width: 4rem;
+  height: 4rem;
+
+  border-radius: 1rem;
+
+  object-fit: cover;
+
+  background: rgba(255, 255, 255, .2);
+}
+
+.hero-info-img.img-fallback {
+  background: linear-gradient(
+    135deg,
+    #60b8fa,
+    #3cc788
+  );
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1023px) {
+
+  .hero-info {
+    right: 1rem;
+    bottom: 1.25rem;
+
+    gap: .75rem;
+
+    padding: .7rem .8rem;
+  }
+
+  .hero-info span {
+    font-size: .8rem;
+  }
+
+  .hero-info a {
+    font-size: .72rem;
+  }
+
+  .hero-info-img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .hero-info {
+    left: 1rem;
+    right: 1rem;
+
+    bottom: 1rem;
+
+    width: auto;
+    max-width: none;
+
+    justify-content: space-between;
+
+    gap: .6rem;
+
+    padding: .65rem .75rem;
+
+    border-radius: 1rem;
+  }
+
+  .hero-info span {
+    font-size: .72rem;
+  }
+
+  .hero-info a {
+    font-size: .68rem;
+  }
+
+  .hero-info-img {
+    width: 3.25rem;
+    height: 3.25rem;
+
+    border-radius: .8rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .hero-info {
+    left: .7rem;
+    right: .7rem;
+
+    gap: .4rem;
+
+    padding: .55rem .6rem;
+  }
+
+  .hero-info span {
+    font-size: .65rem;
+  }
+
+  .hero-info a {
+    font-size: .62rem;
+  }
+
+  .hero-info-img {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* About / experience overlapping images */
+
+
+
+
+/* =========================================================
+   ABOUT SECTION
+   ========================================================= */
+
+.about-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding: 7rem 5%;
+
+  background:
+    radial-gradient(
+      circle at 85% 45%,
+      rgba(36, 128, 235, .08),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(60, 199, 136, .06),
+      transparent 30%
+    );
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   ABOUT CONTAINER
+   ========================================================= */
+
+.about-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: clamp(3rem, 7vw, 7rem);
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.about-content {
+  width: 100%;
+  max-width: 560px;
+}
+
+.about-label {
+  display: flex;
+  align-items: center;
+
+  gap: .65rem;
+
+  margin-bottom: 1.2rem;
+
+  color: #2480eb;
+
+  font-size: .75rem;
+  font-weight: 800;
+
+  letter-spacing: .14em;
+}
+
+.about-label-line {
+  width: 32px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: #2480eb;
+}
+
+
+.about-title {
+  margin: 0;
+
+  font-size: clamp(
+    2.5rem,
+    4.5vw,
+    4.5rem
+  );
+
+  line-height: 1.02;
+
+  letter-spacing: -.045em;
+
+  font-weight: 900;
+
+  color: rgb(15 23 42);
+}
+
+.dark .about-title {
+  color: #fff;
+}
+
+
+.about-title span {
+  display: block;
+
+  margin-top: .08em;
+
+  color: #2480eb;
+
+  font-family:
+    Georgia,
+    'Times New Roman',
+    serif;
+
+  font-style: italic;
+
+  font-weight: 700;
+}
+
+
+.about-text {
+  max-width: 520px;
+
+  margin-top: 1.5rem;
+
+  color: rgb(100 116 139);
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+}
+
+.dark .about-text {
+  color: rgb(148 163 184);
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.about-button {
+  display: inline-flex;
+  align-items: center;
+
+  gap: .9rem;
+
+  margin-top: 2rem;
+
+  padding: .9rem 1.3rem;
+
+  border-radius: 999px;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2480eb,
+      #3cc788
+    );
+
+  font-size: .9rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 10px 25px rgba(36, 128, 235, .2);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.about-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 30px rgba(36, 128, 235, .28);
+}
+
+.about-button-arrow {
+  display: grid;
+  place-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.2);
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.about-features {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: .7rem;
+
+  margin-top: 2rem;
+}
+
+.about-feature {
+  display: inline-flex;
+  align-items: center;
+
+  gap: .45rem;
+
+  padding: .55rem .75rem;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(148, 163, 184, .2);
+
+  background: rgba(148, 163, 184, .06);
+
+  color: rgb(71 85 105);
+
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.dark .about-feature {
+  color: rgb(203 213 225);
+
+  border-color: rgba(255,255,255,.1);
+
+  background: rgba(255,255,255,.04);
+}
+
+.about-feature-icon {
+  display: grid;
+  place-items: center;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  background: #3cc788;
+
+  font-size: .65rem;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   RIGHT VISUAL
+   ========================================================= */
+
+.about-visual {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.about-glow {
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(36,128,235,.14),
+      transparent 68%
+    );
+
+  filter: blur(8px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE CARDS
+   ========================================================= */
+
+.about-image-card {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.dark .about-image-card {
+  border-color:none;
+
+  background: transparent;
+}
+
+.about-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+.about-image-main {
+  width: 75%;
+  height: 330px;
+
+  top: 45px;
+  right: 4%;
+
+  transform: rotate(2deg);
+
+  z-index: 2;
+}
+
+
+.about-image-small {
+  width: 42%;
+  height: 190px;
+
+  left: 2%;
+  bottom: 20px;
+
+  transform: rotate(-6deg);
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   IMAGE TAG
+   ========================================================= */
+
+.about-image-tag {
+  position: absolute;
+
+  left: 1rem;
+  top: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: .5rem;
+
+  padding: .5rem .75rem;
+
+  border-radius: 999px;
+
+  background: rgba(2,6,23,.65);
+
+  color: #fff;
+
+  font-size: .7rem;
+  font-weight: 700;
+
+  backdrop-filter: blur(8px);
+}
+
+.about-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #3cc788;
+
+  box-shadow:
+    0 0 10px rgba(60,199,136,.8);
+}
+
+
+/* =========================================================
+   STAT CARD
+   ========================================================= */
+
+.about-stat-card {
+  position: absolute;
+
+  right: 0;
+  bottom: 15px;
+
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 1.15rem;
+
+  border-radius: 1.2rem;
+
+  background: rgba(255,255,255,.82);
+
+  border: 1px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 15px 35px rgba(15,23,42,.14);
+
+  backdrop-filter: blur(14px);
+}
+
+.dark .about-stat-card {
+  background: rgba(15,23,42,.8);
+
+  border-color: rgba(255,255,255,.1);
+}
+
+.about-stat-card strong {
+  color: #2480eb;
+
+  font-size: 1.5rem;
+
+  line-height: 1;
+}
+
+.about-stat-card span {
+  margin-top: .35rem;
+
+  color: rgb(100 116 139);
+
+  font-size: .65rem;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1023px) {
+
+  .about-section {
+    padding: 5.5rem 4%;
+  }
+
+  .about-container {
+    gap: 3rem;
+  }
+
+  .about-title {
+    font-size: clamp(
+      2.3rem,
+      5vw,
+      3.5rem
+    );
+  }
+
+  .about-visual {
+    min-height: 430px;
+  }
+
+  .about-image-main {
+    width: 78%;
+    height: 280px;
+  }
+
+  .about-image-small {
+    width: 45%;
+    height: 160px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .about-section {
+    padding: 4.5rem 1.25rem;
+  }
+
+  .about-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3rem;
+  }
+
+  .about-content {
+    max-width: none;
+  }
+
+  .about-title {
+    font-size: clamp(
+      2.2rem,
+      10vw,
+      3.2rem
+    );
+  }
+
+  .about-text {
+    font-size: .9rem;
+    line-height: 1.7;
+  }
+
+  .about-features {
+    gap: .5rem;
+  }
+
+  .about-feature {
+    font-size: .68rem;
+  }
+
+  .about-visual {
+    min-height: 390px;
+  }
+
+  .about-image-main {
+    width: 76%;
+    height: 250px;
+
+    right: 2%;
+    top: 30px;
+  }
+
+  .about-image-small {
+    width: 46%;
+    height: 145px;
+
+    left: 0;
+    bottom: 15px;
+  }
+
+  .about-stat-card {
+    right: 0;
+    bottom: 5px;
+
+    padding: .75rem .9rem;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .about-section {
+    padding-inline: 1rem;
+  }
+
+  .about-title {
+    font-size: 2.15rem;
+  }
+
+  .about-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-features {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-feature {
+    justify-content: center;
+  }
+
+  .about-visual {
+    min-height: 340px;
+  }
+
+  .about-image-main {
+    width: 78%;
+    height: 220px;
+  }
+
+  .about-image-small {
+    width: 48%;
+    height: 125px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+  .about-title {
+    font-size: 1.9rem;
+  }
+
+  .about-feature {
+    font-size: .6rem;
+  }
+
+  .about-visual {
+    min-height: 310px;
+  }
+
+  .about-image-main {
+    height: 195px;
+  }
+
+  .about-image-small {
+    height: 110px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PREMIUM FLEET SECTION
+========================================================= */
+
+.fleet-section {
+  position: relative;
+  padding: 100px 20px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.dark .fleet-section {
+  background: #020617;
+}
+
+.fleet-container {
+  width: min(1150px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.fleet-heading {
+  max-width: 700px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.fleet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: rgba(36, 128, 235, .08);
+  color: #2480eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.fleet-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3cc788;
+  box-shadow: 0 0 0 5px rgba(60, 199, 136, .12);
+}
+
+.fleet-heading h2 {
+  margin: 18px 0 14px;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -.04em;
+  color: #0f172a;
+}
+
+.fleet-heading h2 span {
+  display: block;
+  color: #2480eb;
+}
+
+.dark .fleet-heading h2 {
+  color: #f8fafc;
+}
+
+.fleet-heading p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dark .fleet-heading p {
+  color: #94a3b8;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.fleet-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  min-height: 570px;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, .9);
+  box-shadow:
+    0 25px 70px rgba(15, 23, 42, .10);
+}
+
+.dark .fleet-card {
+  background: #0f172a;
+  border-color: #1e293b;
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, .25);
+}
+
+
+/* =========================
+   IMAGE SIDE
+========================= */
+
+.fleet-car-side {
+  position: relative;
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(36, 128, 235, .13),
+      transparent 62%
+    ),
+    linear-gradient(
+      145deg,
+      #eef6ff,
+      #f8fafc
+    );
+}
+
+.dark .fleet-car-side {
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(36, 128, 235, .18),
+      transparent 62%
+    ),
+    linear-gradient(
+      145deg,
+      #0f172a,
+      #020617
+    );
+}
+
+.fleet-car-glow {
+  position: absolute;
+  width: 360px;
+  height: 160px;
+  left: 50%;
+  bottom: 85px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(36, 128, 235, .16);
+  filter: blur(35px);
+}
+
+.fleet-image-wrap {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  height: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fleet-car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 22px 20px rgba(15, 23, 42, .18));
+  transition: transform .45s ease;
+}
+
+.fleet-card:hover .fleet-car-image {
+  transform: scale(1.035);
+}
+
+
+/* Number */
+
+.fleet-car-number {
+  position: absolute;
+  top: 28px;
+  left: 30px;
+  z-index: 3;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  color: #94a3b8;
+}
+
+
+/* Image label */
+
+.fleet-image-label {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  z-index: 4;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 15px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .10);
+}
+
+.dark .fleet-image-label {
+  background: rgba(15, 23, 42, .82);
+  color: #e2e8f0;
+}
+
+.fleet-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3cc788;
+  box-shadow: 0 0 0 5px rgba(60, 199, 136, .12);
+}
+
+
+/* =========================
+   DETAILS
+========================= */
+
+.fleet-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 65px 55px;
+}
+
+.fleet-category {
+  display: block;
+  margin-bottom: 15px;
+  color: #2480eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.fleet-details h3 {
+  margin: 0 0 20px;
+  color: #0f172a;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -.035em;
+}
+
+.fleet-details h3 span {
+  display: block;
+  color: #2480eb;
+}
+
+.dark .fleet-details h3 {
+  color: #f8fafc;
+}
+
+.fleet-details-top p {
+  margin: 0;
+  max-width: 500px;
+  color: #64748b;
+  line-height: 1.75;
+}
+
+.dark .fleet-details-top p {
+  color: #94a3b8;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.fleet-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.fleet-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.dark .fleet-feature {
+  background: #111c2e;
+  border-color: #1e293b;
+}
+
+.fleet-feature:hover {
+  transform: translateY(-3px);
+  border-color: rgba(36, 128, 235, .35);
+}
+
+.fleet-feature-icon {
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+  background: rgba(36, 128, 235, .09);
+  font-size: 18px;
+}
+
+.fleet-feature span {
+  display: block;
+  margin-bottom: 3px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.fleet-feature strong {
+  display: block;
+  color: #334155;
+  font-size: 13px;
+}
+
+.dark .fleet-feature strong {
+  color: #e2e8f0;
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.fleet-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  margin-top: 32px;
+  padding-top: 25px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+.dark .fleet-bottom {
+  border-top-color: #1e293b;
+}
+
+.fleet-price-text span {
+  display: block;
+  margin-bottom: 3px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.fleet-price-text strong {
+  color: #334155;
+  font-size: 13px;
+}
+
+.dark .fleet-price-text strong {
+  color: #e2e8f0;
+}
+
+
+/* =========================
+   BOOK BUTTON
+========================= */
+
+.fleet-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 13px 15px 13px 20px;
+  border-radius: 15px;
+
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #2480eb,
+    #3cc788
+  );
+
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+
+  box-shadow: 0 10px 25px rgba(36, 128, 235, .20);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.fleet-book-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(36, 128, 235, .28);
+}
+
+.fleet-book-arrow {
+  width: 31px;
+  height: 31px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .18);
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+  .fleet-section {
+    padding: 80px 20px;
+  }
+
+  .fleet-card {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-car-side {
+    min-height: 460px;
+  }
+
+  .fleet-image-wrap {
+    width: 90%;
+    height: 340px;
+  }
+
+  .fleet-details {
+    padding: 45px 40px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .fleet-section {
+    padding: 65px 15px;
+  }
+
+  .fleet-heading {
+    margin-bottom: 35px;
+  }
+
+  .fleet-heading h2 {
+    font-size: 2.35rem;
+  }
+
+  .fleet-heading p {
+    font-size: 14px;
+  }
+
+  .fleet-card {
+    border-radius: 25px;
+  }
+
+  .fleet-car-side {
+    min-height: 310px;
+  }
+
+  .fleet-image-wrap {
+    width: 94%;
+    height: 245px;
+  }
+
+  .fleet-car-number {
+    top: 20px;
+    left: 20px;
+  }
+
+  .fleet-image-label {
+    left: 18px;
+    bottom: 18px;
+    padding: 8px 12px;
+  }
+
+  .fleet-details {
+    padding: 35px 22px;
+  }
+
+  .fleet-details h3 {
+    font-size: 2rem;
+  }
+
+  .fleet-details-top p {
+    font-size: 14px;
+  }
+
+  .fleet-features {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-top: 25px;
+  }
+
+  .fleet-feature {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .fleet-feature-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    font-size: 15px;
+  }
+
+  .fleet-feature strong {
+    font-size: 11px;
+  }
+
+  .fleet-bottom {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .fleet-book-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .fleet-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .fleet-heading h2 {
+    font-size: 2rem;
+  }
+
+  .fleet-car-side {
+    min-height: 280px;
+  }
+
+  .fleet-image-wrap {
+    height: 220px;
+  }
+
+  .fleet-details {
+    padding: 30px 18px;
+  }
+
+  .fleet-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Premium Car Glow */
+
+.fleet-car-side::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(36, 128, 235, 0.10);
+  filter: blur(45px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fleetGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.fleet-car-side::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(60, 199, 136, 0.08);
+  filter: blur(40px);
+  top: 45%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  animation: fleetGlow 5s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes fleetGlow {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Destinations carousel */
+.carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .5rem .25rem 1.25rem;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, .4);
+  border-radius: 99px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   GURUDEV TRAVELS
+   FLOATING TRAVEL DECK
+   PREMIUM DESTINATION CAROUSEL
+========================================================= */
+
+#discover {
+  position: relative;
+  overflow: hidden;
+  padding: 105px 0 95px;
+  background:
+    radial-gradient(
+      circle at 8% 30%,
+      rgba(36, 128, 235, 0.10),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 70%,
+      rgba(60, 199, 136, 0.09),
+      transparent 28%
+    ),
+    #f8fafc;
+}
+
+.dark #discover {
+  background:
+    radial-gradient(
+      circle at 8% 30%,
+      rgba(36, 128, 235, 0.13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 70%,
+      rgba(60, 199, 136, 0.10),
+      transparent 28%
+    ),
+    #07111f;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.discover-intro {
+  position: relative;
+  z-index: 5;
+
+  max-width: 760px;
+
+  margin: 0 auto 55px;
+
+  padding: 0 20px;
+
+  text-align: center;
+}
+
+.discover-kicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  color: #2480eb;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+.discover-kicker-line {
+  width: 32px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #2480eb
+  );
+}
+
+.discover-kicker-line:last-child {
+  background: linear-gradient(
+    90deg,
+    #3cc788,
+    transparent
+  );
+}
+
+.discover-title {
+  margin-top: 18px;
+
+  color: #0f172a;
+
+  font-size: clamp(
+    2.5rem,
+    5vw,
+    4.7rem
+  );
+
+  font-weight: 900;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+}
+
+.dark .discover-title {
+  color: #ffffff;
+}
+
+.discover-title span {
+  display: block;
+
+  margin-top: 5px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #2480eb,
+      #3cc788
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.discover-description {
+  max-width: 560px;
+
+  margin: 20px auto 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+.dark .discover-description {
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   MAIN CAROUSEL
+========================================================= */
+
+.dest-carousel {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  width: 100%;
+
+  padding:
+    35px
+    max(5vw, 24px)
+    55px;
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+
+  perspective: 1400px;
+
+  overscroll-behavior-x: contain;
+}
+
+.dest-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   DESTINATION CARD
+========================================================= */
+
+.dest-carousel .dest-card {
+
+  position: relative;
+
+  flex: 0 0 315px;
+
+  width: 315px;
+
+  height: 455px;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  scroll-snap-align: center;
+
+  text-decoration: none;
+
+  isolation: isolate;
+
+  background: #111827;
+
+  border: 1px solid rgba(
+    255,
+    255,
+    255,
+    0.18
+  );
+
+  box-shadow:
+    0 25px 55px
+    rgba(15, 23, 42, 0.15),
+
+    0 4px 12px
+    rgba(15, 23, 42, 0.08);
+
+  transform:
+    rotateY(0deg)
+    translateY(0);
+
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    box-shadow .45s ease;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.dest-carousel .dest-card img {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transform: scale(1.015);
+
+  filter: saturate(.92);
+
+  transition:
+    transform .7s cubic-bezier(.2,.8,.2,1),
+    filter .5s ease;
+}
+
+
+/* =========================================================
+   CINEMATIC GRADIENT
+========================================================= */
+
+.dest-carousel .dest-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3,7,18,0.02) 0%,
+      rgba(3,7,18,0.04) 32%,
+      rgba(3,7,18,0.20) 52%,
+      rgba(3,7,18,0.90) 100%
+    );
+}
+
+
+/* =========================================================
+   TOP GLASS DETAIL
+========================================================= */
+
+.dest-carousel .dest-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  z-index: 4;
+
+  top: 18px;
+  left: 18px;
+
+  width: 72px;
+  height: 72px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.22),
+      transparent 65%
+    );
+
+  filter: blur(4px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.dest-carousel .dest-card::after {
+
+  content: "";
+
+  position: absolute;
+
+  z-index: 5;
+
+  top: 20px;
+  right: 20px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    rgba(255,255,255,.28);
+
+  background:
+    rgba(10,18,32,.35);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,255,255,.15);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   DESTINATION INFORMATION
+========================================================= */
+
+.dest-carousel .dest-label {
+
+  position: absolute;
+
+  z-index: 6;
+
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+
+  padding: 20px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15,23,42,.68),
+      rgba(15,23,42,.38)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.15);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  box-shadow:
+    0 16px 35px
+    rgba(0,0,0,.20),
+
+    inset 0 1px 0
+    rgba(255,255,255,.12);
+
+  transition:
+    transform .4s ease,
+    background .4s ease;
+}
+
+.dest-carousel .dest-label h3 {
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 1.55rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -.025em;
+}
+
+.dest-carousel .dest-label span {
+
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    rgba(255,255,255,.70);
+
+  font-size: .75rem;
+
+  letter-spacing: .04em;
+}
+
+
+/* =========================================================
+   ARROW INSIDE CARD
+========================================================= */
+
+.dest-carousel .dest-label::after {
+
+  content: "↗";
+
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2480eb,
+      #3cc788
+    );
+
+  font-size: 18px;
+
+  box-shadow:
+    0 8px 22px
+    rgba(36,128,235,.32);
+
+  transition:
+    transform .3s ease;
+}
+
+
+/* =========================================================
+   PREMIUM ACTIVE / HOVER FEEL
+========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .dest-carousel .dest-card:hover {
+
+    transform:
+      translateY(-15px)
+      rotateY(0deg)
+      scale(1.015);
+
+    box-shadow:
+      0 35px 75px
+      rgba(15,23,42,.22),
+
+      0 0 0 1px
+      rgba(36,128,235,.14);
+  }
+
+  .dest-carousel .dest-card:hover img {
+
+    transform: scale(1.09);
+
+    filter:
+      saturate(1.12)
+      contrast(1.02);
+  }
+
+  .dest-carousel .dest-card:hover
+  .dest-label {
+
+    transform: translateY(-3px);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(15,23,42,.78),
+        rgba(15,23,42,.48)
+      );
+  }
+
+  .dest-carousel .dest-card:hover
+  .dest-label::after {
+
+    transform:
+      rotate(8deg)
+      scale(1.08);
+  }
+}
+
+
+/* =========================================================
+   CAROUSEL EDGE FADE
+========================================================= */
+
+#discover {
+  --fade-bg: #f8fafc;
+}
+
+.dark #discover {
+  --fade-bg: #07111f;
+}
+
+.dest-carousel::before,
+.dest-carousel::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 70px;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.dest-carousel::before {
+
+  left: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--fade-bg),
+      transparent
+    );
+}
+
+.dest-carousel::after {
+
+  right: 0;
+
+  background:
+    linear-gradient(
+      270deg,
+      var(--fade-bg),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   EXISTING ARROW BUTTONS
+========================================================= */
+
+#discover .carousel-btn {
+
+  position: relative;
+
+  z-index: 20;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(36,128,235,.14);
+
+  background:
+    rgba(255,255,255,.92);
+
+  color: #0f172a;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 32px
+    rgba(15,23,42,.12);
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    color .3s ease,
+    box-shadow .3s ease;
+}
+
+.dark #discover .carousel-btn {
+
+  background:
+    rgba(15,23,42,.85);
+
+  color: #ffffff;
+
+  border-color:
+    rgba(255,255,255,.10);
+}
+
+#discover .carousel-btn:hover {
+
+  transform:
+    translateY(-4px);
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2480eb,
+      #3cc788
+    );
+
+  box-shadow:
+    0 16px 35px
+    rgba(36,128,235,.28);
+}
+
+#discover .carousel-btn:active {
+
+  transform:
+    scale(.94);
+}
+
+
+/* =========================================================
+   COLLAGE BELOW
+========================================================= */
+
+#discover >
+.max-w-6xl.mx-auto.px-5.mt-10 {
+
+  margin-top: 65px;
+}
+
+#discover >
+.max-w-6xl.mx-auto.px-5.mt-10 img {
+
+  display: block;
+
+  width: 100%;
+
+  border-radius: 32px;
+
+  border:
+    1px solid
+    rgba(36,128,235,.12);
+
+  box-shadow:
+    0 30px 75px
+    rgba(15,23,42,.13);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  #discover {
+
+    padding:
+      85px 0 80px;
+  }
+
+  .dest-carousel {
+
+    gap: 16px;
+
+    padding:
+      30px 28px 48px;
+  }
+
+  .dest-carousel .dest-card {
+
+    flex-basis: 285px;
+
+    width: 285px;
+
+    height: 415px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  #discover {
+
+    padding:
+      70px 0 65px;
+  }
+
+  .discover-intro {
+
+    margin-bottom: 35px;
+  }
+
+  .discover-kicker {
+
+    font-size: 9px;
+
+    letter-spacing:
+      .13em;
+  }
+
+  .discover-kicker-line {
+
+    width: 20px;
+  }
+
+  .discover-title {
+
+    font-size:
+      clamp(2.35rem, 12vw, 3.3rem);
+
+    line-height: .98;
+  }
+
+  .discover-description {
+
+    padding: 0 12px;
+
+    font-size: 14px;
+  }
+
+  .dest-carousel {
+
+    gap: 14px;
+
+    padding:
+      20px 20px 45px;
+
+    scroll-padding-left: 20px;
+  }
+
+  .dest-carousel .dest-card {
+
+    flex:
+      0 0 82vw;
+
+    width: 82vw;
+
+    height: 420px;
+
+    border-radius: 28px;
+  }
+
+  .dest-carousel .dest-label {
+
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+
+    padding: 17px;
+
+    border-radius: 20px;
+  }
+
+  .dest-carousel .dest-label h3 {
+
+    font-size:
+      1.35rem;
+  }
+
+  .dest-carousel .dest-label span {
+
+    font-size:
+      .68rem;
+  }
+
+  #discover .carousel-btn {
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 17px;
+  }
+
+  #discover >
+  .max-w-6xl.mx-auto.px-5.mt-10 {
+
+    margin-top: 40px;
+  }
+
+  #discover >
+  .max-w-6xl.mx-auto.px-5.mt-10 img {
+
+    border-radius: 22px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .dest-carousel .dest-card {
+
+    flex-basis: 84vw;
+
+    width: 84vw;
+
+    height: 390px;
+  }
+
+  .dest-carousel .dest-label h3 {
+
+    font-size:
+      1.25rem;
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+
+  .dest-carousel .dest-card:hover {
+
+    transform: none;
+
+    box-shadow:
+      0 25px 55px
+      rgba(15,23,42,.15);
+  }
+
+  .dest-carousel .dest-card:hover img {
+
+    transform: scale(1.015);
+
+    filter: saturate(.92);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+.dest-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 15rem;
+  height: 20rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: 0 18px 40px -22px rgba(2, 6, 23, .5);
+  transition: transform .25s;
+}
+
+.dest-card:hover {
+  transform: translateY(-6px);
+}
+
+.dest-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dest-card.img-fallback {
+  background: linear-gradient(135deg, #1c69d8, #16a06b);
+}
+
+.dest-card.img-fallback::after {
+  content: "📍";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: .85;
+}
+
+.dest-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(2, 6, 23, .8), transparent 55%);
+}
+
+.dest-label {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1.1rem;
+  color: #fff;
+  z-index: 2;
+} */
+
+/* Scroll-up button */
+.scrollup {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: .85rem;
+  color: #fff;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #2480eb, #16a06b);
+  box-shadow: 0 14px 30px -12px rgba(36, 128, 235, .6);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+
+.scrollup.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ============================================================
+   Responsive — phone first, then the desktop refinements.
+   The layout itself is Tailwind's (sm:/lg: classes in index.html);
+   what lives here are the fixes Tailwind utilities can't express.
+   ============================================================ */
+
+/* Nothing should ever scroll sideways — decorative blurs and the
+   destinations carousel are the usual culprits. */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* The navbar is fixed and 5rem tall, so in-page anchors (#about, #booking…)
+   would otherwise land with their heading hidden underneath it. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Use the small-viewport unit where supported so the hero isn't pushed
+   under a mobile browser's address bar. */
+section.hero {
+  min-height: 100vh;
+}
+
+@supports (height: 100svh) {
+  section.hero {
+    min-height: 100svh;
+  }
+}
+
+/* Touch-friendly momentum + the card is never cut off at the left edge. */
+.carousel {
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-left: 1.25rem;
+  overscroll-behavior-x: contain;
+}
+
+@media (max-width:640px) {
+
+  /* iOS zooms the whole page when a focused input is under 16px. */
+  .form-input,
+  .map-pick-btn,
+  select.form-input,
+  textarea.form-input {
+    font-size: 16px;
+  }
+
+  /* Slightly smaller destination cards so a bit of the next one always peeks
+     in — that is what tells a thumb the strip scrolls. */
+  .dest-card {
+    width: 13.5rem;
+    height: 18rem;
+  }
+
+  /* The picker button stays square next to a full-width input. */
+  .map-pick-btn {
+    width: 3.25rem;
+  }
+
+  /* Keep the scroll-up button clear of the home indicator on notched phones. */
+  .scrollup {
+    right: .85rem;
+    bottom: calc(.85rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Landscape phones: the map modal has almost no vertical room. */
+@media (max-height:520px) {
+  .map-canvas {
+    height: min(58vh, 260px);
+  }
+}
+
+/* Desktop: bigger cards, and hover affordances that only make sense with a mouse. */
+@media (min-width:1024px) {
+  .dest-card {
+    width: 16rem;
+    height: 21rem;
+  }
+}
+
+@media (hover:none) {
+
+  /* Touch devices get no hover lift — it would stick after a tap. */
+  .dest-card:hover,
+  .feature-card:hover,
+  .car-card:hover {
+    transform: none;
+  }
+}
+
+/* Destinations carousel arrows */
+.carousel-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #1c69d8, #16a06b);
+  box-shadow: 0 8px 20px -10px rgba(2, 6, 23, .6);
+  transition: transform .2s;
+}
+
+.carousel-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Logo: wordmark + animated race car (front view) */
+.logo-text {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: .02em;
+  background: linear-gradient(
+    110deg,
+    #fff 35%,
+    #facc15 45%,
+    #fff 55%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logo-shine 4s linear infinite;
+}
+
+@keyframes logo-shine {
+  from {
+    background-position: 200% center;
+  }
+
+  to {
+    background-position: -50% center;
+  }
+}
+.logo-text:hover {
+  color: #facc15;
+  transform: scale(1.04);
+}
+
+
+
+
+@media (min-width:640px) {
+  .logo-text {
+    font-size: 1.5rem;
+  }
+}
+
+.logo-badge {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 4rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(160deg, #e0f2fe 0%, #ffffff 60%, #fef3c7 100%);
+  border: 2px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 8px 22px -8px rgba(36, 128, 235, .55);
+}
+
+.logo-car {
+  width: 3.1rem;
+  height: auto;
+  overflow: visible;
+}
+
+.logo-car-body {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: logo-rev .4s ease-in-out infinite alternate;
+}
+
+.logo-light {
+  animation: logo-blink 1s steps(2, end) infinite;
+}
+
+.logo-streaks {
+  animation: logo-streak .6s linear infinite;
+}
+
+@keyframes logo-rev {
+  from {
+    transform: translate(-.4px, 0) scale(1);
+  }
+
+  to {
+    transform: translate(.4px, -1px) scale(1.04);
+  }
+}
+
+@keyframes logo-blink {
+  50% {
+    opacity: .55;
+  }
+}
+
+@keyframes logo-streak {
+  from {
+    transform: translateY(-6px);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .logo-car-body,
+  .logo-light,
+  .logo-streaks {
+    animation: none;
+  }
+}
+
+/* Pickup/drop suggestion rows (Google-style: bold place + muted region) */
+.map-results li .suggest-sub {
+  color: #64748b;
+  font-size: .85em;
+}
+
+/* Subscribe banner: mountain photo with a dark gradient so the text stays readable */
+.subscribe-bg {
+  background:
+    linear-gradient(to bottom, rgba(2, 6, 23, .45), rgba(2, 6, 23, .6)),
+    #1d4a8a url("https://commons.wikimedia.org/wiki/Special:FilePath/Kangchenjunga_PangPema.JPG?width=1600") center / cover no-repeat;
+}
