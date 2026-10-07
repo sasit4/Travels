@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurudev Travels · Premium Innova Travel</title>
+  <meta name="description"
+    content="Book premium Toyota Innova cabs for your next journey — clean, comfortable, reliable." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#eff8ff', 100: '#dbeefe', 200: '#bfe3fe', 300: '#93d2fd', 400: '#60b8fa', 500: '#3b9bf6', 600: '#2480eb', 700: '#1c69d8', 800: '#1d56af', 900: '#1d4a8a' },
+            jade: { 50: '#edfcf4', 100: '#d4f7e3', 200: '#aceecb', 300: '#75dfac', 400: '#3cc788', 500: '#16a06b', 600: '#0a8056', 700: '#086746', 900: '#06402e' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], brand: ['Outfit', 'sans-serif'] },
+          boxShadow: { glow: '0 20px 60px -15px rgba(36,128,235,0.35)' },
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Leaflet — open-source map (OpenStreetMap), no API key needed -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body
+  class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+
+<header class="fixed top-0 inset-x-0 z-40 transition-colors duration-300" id="navbar">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 h-20 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-2 sm:gap-3 text-white min-w-0 shrink-0">
+      <span class="logo-badge shrink-0">
+        <svg class="logo-car w-12 sm:w-14 h-auto" viewBox="0 0 64 44" aria-hidden="true">
+          <g class="logo-streaks" stroke-linecap="round">
+            <path d="M5 4v7M11 10v9M53 10v9M59 4v7"
+              stroke="#38bdf8" stroke-width="2"/>
+            <path d="M2 16v6M62 16v6"
+              stroke="#a78bfa" stroke-width="2"/>
+          </g>
+
+          <ellipse cx="32" cy="41" rx="26" ry="2.500"
+            fill="#0f172a" opacity=".25"/>
+
+          <g class="logo-car-body">
+            <rect x="3" y="24" width="9" height="15" rx="3" fill="#111827"/>
+            <rect x="52" y="24" width="9" height="15" rx="3" fill="#111827"/>
+
+            <path class="logo-tread"
+              d="M4.500 28h6M4.500 32h6M4.500 36h6M53.500 28h6M53.500 32h6M53.500 36h6"
+              stroke="#f59e0b" stroke-width="1.300"/>
+
+            <path d="M18 16c2-4 6-6 14-6s12 2 14 6l2 6H16z"
+              fill="#dc2626"/>
+
+            <path d="M21 16c1.500-2.500 5-4 11-4s9.500 1.500 11 4l1 4H20z"
+              fill="#38bdf8"/>
+
+            <path d="M24 14l4 6M40 14l-4 6"
+              stroke="#fff" stroke-width="1.200" opacity=".7"/>
+
+            <path d="M10 22h44c3 0 5 2 5 5v4c0 2-1 3-3 3H8c-2 0-3-1-3-3v-4c0-3 2-5 5-5z"
+              fill="#ef4444"/>
+
+            <path d="M28 22h8v14h-8z" fill="#fbbf24"/>
+
+            <path d="M30 22h1v14h-1zM33 22h1v14h-1z"
+              fill="#fff" opacity=".8"/>
+
+            <rect class="logo-light"
+              x="10" y="25" width="12" height="6" rx="3"
+              fill="#fef9c3" stroke="#f97316" stroke-width="1.200"/>
+
+            <rect class="logo-light"
+              x="42" y="25" width="12" height="6" rx="3"
+              fill="#fef9c3" stroke="#f97316" stroke-width="1.200"/>
+
+            <rect x="23" y="32" width="18" height="4" rx="1.500"
+              fill="#1f2937"/>
+
+            <path d="M25 34h14"
+              stroke="#cbd5e1"
+              stroke-width="1"
+              stroke-dasharray="2 1.500"/>
+
+            <rect x="1" y="37" width="62" height="4" rx="2"
+              fill="#7c3aed"/>
+
+            <rect x="1" y="37" width="62" height="1.300" rx=".6"
+              fill="#c4b5fd"/>
+          </g>
+        </svg>
+      </span>
+
+      <span class="logo-text text-base sm:text-lg md:text-xl whitespace-nowrap">
+        Gurudev Travels
+      </span>
+    </a>
+
+
+    <!-- Desktop / Tablet Menu -->
+    <div class="hidden lg:flex items-center gap-1 xl:gap-2">
+
+      <a href="#home" class="nav-link nav-on-hero px-2 xl:px-3 whitespace-nowrap">
+        Home
+      </a>
+
+      <a href="#about" class="nav-link nav-on-hero px-2 xl:px-3 whitespace-nowrap">
+        About
+      </a>
+
+      <a href="#fleet" class="nav-link nav-on-hero px-2 xl:px-3 whitespace-nowrap">
+        Cars
+      </a>
+
+      <a href="#discover" class="nav-link nav-on-hero px-2 xl:px-3 whitespace-nowrap">
+        Destinations
+      </a>
+
+      <a href="#booking" class="nav-link nav-on-hero px-2 xl:px-3 whitespace-nowrap">
+        Booking
+      </a>
+
+      <a href="#contact" class="nav-link nav-on-hero px-2 xl:px-3 whitespace-nowrap">
+        Contact
+      </a>
+
+      <button
+        id="themeToggle"
+        aria-label="Toggle theme"
+        class="ml-1 xl:ml-2 grid place-items-center w-9 h-9 xl:w-10 xl:h-10 rounded-xl border border-white/30 text-white hover:bg-white/10 transition shrink-0">
+
+        <span class="dark:hidden">🌙</span>
+        <span class="hidden dark:inline">☀️</span>
+
+      </button>
+    </div>
+
+
+    <!-- Mobile / Tablet Menu Button -->
+    <div class="flex lg:hidden items-center gap-2 sm:gap-3 shrink-0">
+
+      <button
+        id="themeToggleMobile"
+        aria-label="Toggle theme"
+        class="grid place-items-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-white/30 text-white hover:bg-white/10 transition">
+
+        <span class="dark:hidden">🌙</span>
+        <span class="hidden dark:inline">☀️</span>
+
+      </button>
+
+      <button
+        id="mobileMenuBtn"
+        class="text-white p-2 shrink-0"
+        aria-label="Open menu">
+
+        <svg
+          class="w-7 h-7 sm:w-8 sm:h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"/>
+
+        </svg>
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- Mobile / Tablet Dropdown -->
+  <div
+    id="mobileMenu"
+    class="hidden lg:hidden absolute top-full inset-x-0
+           bg-slate-900/95 backdrop-blur-lg
+           border-b border-white/10
+           px-5 py-5 space-y-3">
+
+    <a href="#home"
+       class="block text-white font-semibold text-base sm:text-lg py-1">
+      Home
+    </a>
+
+    <a href="#about"
+       class="block text-white font-semibold text-base sm:text-lg py-1">
+      About
+    </a>
+
+    <a href="#fleet"
+       class="block text-white font-semibold text-base sm:text-lg py-1">
+      Cars
+    </a>
+
+    <a href="#discover"
+       class="block text-white font-semibold text-base sm:text-lg py-1">
+      Destinations
+    </a>
+
+    <a href="#booking"
+       class="block text-white font-semibold text-base sm:text-lg py-1">
+      Booking
+    </a>
+
+    <a href="#contact"
+       class="block text-white font-semibold text-base sm:text-lg py-1">
+      Contact
+    </a>
+
+  </div>
+
+</header>
+
+
+  <!-- ============================ HOME / HERO ============================ -->
+  <section id="home" class="hero relative min-h-screen flex items-center">
+    <img src="assets/img/hero-india.png" alt="" class="hero-bg"
+      onerror="this.style.display='none'; document.getElementById('home').classList.add('hero-grad');" />
+    <div class="hero-overlay"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-5 w-full pt-20 pb-44 sm:pt-16 sm:pb-56">
+      <div class="hero-title-wrapper">
+        <h1 class="hero-title">
+  <span class="hero-title-main">
+    Explore The Best
+  </span>
+
+  <span class="hero-title-sub">
+    Of
+    <span class="hero-title-highlight">Your Journey</span>
+  </span>
+</h1>
+      </div>
+    </div>
+
+    <!-- vertical social links -->
+    <div class="hero-social">
+      <a href="https://wa.me/919688211890" class="hero-social-link" title="WhatsApp">💬</a>
+      <a href="#" class="hero-social-link" title="Instagram">📸</a>
+    </div>
+
+    <!-- bottom info card -->
+    <div class="hero-info">
+      <div>
+        <span class="block font-semibold text-white">Top-rated Innova rides</span>
+        <a href="#fleet" class="text-sm text-jade-300 font-semibold hover:underline">View fleet →</a>
+      </div>
+      <img src="assets/img/cars.png" alt="Toyota Rumion" class="hero-info-img"
+        onerror="this.classList.add('img-fallback'); this.removeAttribute('src');" />
+    </div>
+  </section>
+
+  <!-- ============================ ABOUT ============================ -->
+<section id="about" class="about-section">
+
+  <div class="about-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="about-content">
+
+      <div class="about-label">
+        <span class="about-label-line"></span>
+        ABOUT GURUDEV TRAVELS
+      </div>
+
+      <h2 class="about-title">
+        More Comfort
+        <span>For Every Mile</span>
+      </h2>
+
+      <p class="about-text">
+        From quick airport transfers to long outstation trips,
+        our well-maintained fleet and verified drivers get you
+        there safely. You choose the route, we handle the rest.
+      </p>
+
+      <a href="#booking" class="about-button">
+        <span>Reserve a Cab</span>
+        <span class="about-button-arrow">→</span>
+      </a>
+
+      <div class="about-features">
+
+        <div class="about-feature">
+          <span class="about-feature-icon">✓</span>
+          <span>Verified Drivers</span>
+        </div>
+
+        <div class="about-feature">
+          <span class="about-feature-icon">✓</span>
+          <span>Comfortable Rides</span>
+        </div>
+
+        <div class="about-feature">
+          <span class="about-feature-icon">✓</span>
+          <span>Safe Journey</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT VISUAL -->
+    <div class="about-visual">
+
+      <div class="about-glow"></div>
+
+      <div class="about-image-card about-image-main">
+
+        <img
+          src="assets/img/cars.png"
+          alt="Toyota Rumion"
+          onerror="this.classList.add('img-fallback'); this.removeAttribute('src');"
+        />
+
+        <div class="about-image-tag">
+          <span class="about-dot"></span>
+          Premium Ride
+        </div>
+
+      </div>
+
+
+      <div class="about-image-card about-image-small">
+
+        <img
+          src="assets/img/cars.png"
+          alt="Toyota Rumion"
+          onerror="this.classList.add('img-fallback'); this.removeAttribute('src');"
+        />
+
+      </div>
+
+
+      <div class="about-stat-card">
+        <strong>100%</strong>
+        <span>Travel Comfort</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ============================ FLEET (cars) ============================ -->
+  <!-- ============================ FLEET ============================ -->
+<section id="fleet" class="fleet-section">
+
+  <div class="fleet-container">
+
+    <!-- Section Heading -->
+    <div class="fleet-heading">
+      <span class="fleet-badge">
+        <span class="fleet-badge-dot"></span>
+        PREMIUM CHOICE
+      </span>
+
+      <h2>
+        Travel In
+        <span>Pure Comfort</span>
+      </h2>
+
+      <p>
+        Experience a smooth and comfortable journey with our
+        premium Toyota Rumion, maintained for every mile.
+      </p>
+    </div>
+
+
+    <!-- Premium Car Card -->
+    <div class="fleet-card">
+
+      <!-- Car Image Side -->
+      <div class="fleet-car-side">
+
+        <div class="fleet-car-glow"></div>
+
+        <div class="fleet-car-number">01</div>
+
+        <div class="fleet-image-wrap">
+          <img
+            src="assets/img/cars.png"
+            alt="Toyota Rumion"
+            class="fleet-car-image"
+            onerror="this.src='https://placehold.co/800x600/f8fafc/1e293b?text=Toyota+Rumion'"
+          />
+        </div>
+
+        <div class="fleet-image-label">
+          <span class="fleet-status-dot"></span>
+          Premium Ride
+        </div>
+
+      </div>
+
+
+      <!-- Details Side -->
+      <div class="fleet-details">
+
+        <div class="fleet-details-top">
+          <span class="fleet-category">TOYOTA • RUMION</span>
+
+          <h3>
+            Designed For
+            <span>Every Journey</span>
+          </h3>
+
+          <p>
+            Our Toyota Rumion is meticulously maintained to provide
+            a smooth and luxurious travel experience. Spacious interiors,
+            premium comfort and reliable performance make it ideal for
+            family outings and group travels.
+          </p>
+        </div>
+
+
+        <!-- Features -->
+        <div class="fleet-features">
+
+          <div class="fleet-feature">
+            <div class="fleet-feature-icon">👥</div>
+            <div>
+              <span>Capacity</span>
+              <strong>7 Seater</strong>
+            </div>
+          </div>
+
+          <div class="fleet-feature">
+            <div class="fleet-feature-icon">❄️</div>
+            <div>
+              <span>Comfort</span>
+              <strong>Dual AC</strong>
+            </div>
+          </div>
+
+          <div class="fleet-feature">
+            <div class="fleet-feature-icon">🧳</div>
+            <div>
+              <span>Storage</span>
+              <strong>Large Trunk</strong>
+            </div>
+          </div>
+
+          <div class="fleet-feature">
+            <div class="fleet-feature-icon">🛡️</div>
+            <div>
+              <span>Safety</span>
+              <strong>Airbags & ABS</strong>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- Bottom -->
+        <div class="fleet-bottom">
+
+          <div class="fleet-price-text">
+            <span>Perfect for</span>
+            <strong>Family & Group Trips</strong>
+          </div>
+
+          <a href="#booking" class="fleet-book-btn">
+            <span>Book This Car</span>
+
+            <span class="fleet-book-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ============================ DESTINATIONS (carousel) ============================ -->
+  <section id="discover" class="py-14 sm:py-16">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="discover-intro">
+
+  <div class="discover-kicker">
+    <span class="discover-kicker-line"></span>
+    <span>EXPLORE SOUTH INDIA</span>
+    <span class="discover-kicker-line"></span>
+  </div>
+
+  <h2 class="discover-title">
+    Places That
+    <span>Stay With You</span>
+  </h2>
+
+  <p class="discover-description">
+    Discover beautiful destinations, unforgettable views and journeys
+    worth remembering.
+  </p>
+
+</div>
+    </div>
+    <div id="destCarousel" class="dest-carousel">
+        <!-- Tamil Nadu (20+) -->
+      <a href="#booking" class="dest-card"><img
+          src="https://www.clubmahindra.com/blog/media/section_images/ultimate-o-8ac88a2da056a3d.jpg" alt="Ooty" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Ooty</h3><span class="text-xs text-white/80">TN · Queen of Hills</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Boating_in_Kodaikanal_Lake_with_Mist.jpg?width=1000"
+          alt="Kodaikanal" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kodaikanal</h3><span class="text-xs text-white/80">TN · Princess of Hills</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://www.tamilnadutemples.in/img/madurai-meenakshi/madurai-meenakshi-4.jpg" alt="Madurai" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Madurai</h3><span class="text-xs text-white/80">TN · Temple City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://www.daiwikhotels.com/wp-content/uploads/2024/07/Rectangle-18262-3-2048x1262.jpg" alt="Rameshwaram" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Rameshwaram</h3><span class="text-xs text-white/80">TN · Spiritual Hub</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Vivekananda_Rock_Memorial%2C_Kanyakumari.jpg?width=1000"
+          alt="Kanyakumari" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kanyakumari</h3><span class="text-xs text-white/80">TN · Land's End</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Yercaud_lake.jpg?width=1000"
+          alt="Yercaud" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Yercaud</h3><span class="text-xs text-white/80">TN · Shevaroy Hills</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Brihadisvara_Temple_during_Maha_Shivaratri-WUS03611_%28edit%29.jpg?width=1000"
+          alt="Thanjavur" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Thanjavur</h3><span class="text-xs text-white/80">TN · Brihadisvara</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Adiyogi_Shiva_steel_burst_2018.jpg?width=1000"
+          alt="Coimbatore" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Coimbatore</h3><span class="text-xs text-white/80">TN · Kovai</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Rock_Fortress_-_Tiruchirappalli_-_India.JPG?width=1000"
+          alt="Trichy" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Trichy</h3><span class="text-xs text-white/80">TN · Rockfort</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Velankanni_Church_2026.jpg?width=1000"
+          alt="Velankanni" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Velankanni</h3><span class="text-xs text-white/80">TN · Basilica</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kumbakonam_Mahamaham_Tank.jpg?width=1000"
+          alt="Kumbakonam" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kumbakonam</h3><span class="text-xs text-white/80">TN · Temple Town</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Salem_city_from_Hills.jpg?width=1000"
+          alt="Salem" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Salem</h3><span class="text-xs text-white/80">TN · Steel City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Cauvery_at_Erode.JPG?width=1000"
+          alt="Erode" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Erode</h3><span class="text-xs text-white/80">TN · Turmeric City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Noyyal_River_in_Tiruppur_JEG0334.jpg?width=1000"
+          alt="Tiruppur" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Tiruppur</h3><span class="text-xs text-white/80">TN · Knitwear</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Vellorefort.jpg?width=1000"
+          alt="Vellore" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Vellore</h3><span class="text-xs text-white/80">TN · Fort City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Nellaiappar_temple_tower.jpg?width=1000"
+          alt="Tirunelveli" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Tirunelveli</h3><span class="text-xs text-white/80">TN · Halwa City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Pollachi_Mahalingapuram_Archway.jpg?width=1000"
+          alt="Pollachi" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Pollachi</h3><span class="text-xs text-white/80">TN · Coconut Hub</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Chettinad_palace_karaikudi_2013-09-07_00-11.jpg?width=1000"
+          alt="Chettinad" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Chettinad</h3><span class="text-xs text-white/80">TN · Royal Heritage</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Temple_atop_the_Dindigul_Fort.jpg?width=1000"
+          alt="Dindigul" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Dindigul</h3><span class="text-xs text-white/80">TN · Biryani City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Arunachalam_temple_from_a_nearby_hill.jpg?width=1000"
+          alt="Tiruvannamalai" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Tiruvannamalai</h3><span class="text-xs text-white/80">TN · Spiritual Mountain</span>
+        </div>
+      </a>
+
+      <!-- Kerala (20+) -->
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Munnar_Overview.jpg?width=1000"
+          alt="Munnar" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Munnar</h3><span class="text-xs text-white/80">KL · Tea Gardens</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Alappuzha_Boat_Beauty_W.jpg?width=1000"
+          alt="Alleppey" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Alleppey</h3><span class="text-xs text-white/80">KL · Backwaters</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kochi_Skyline.jpg?width=1000"
+          alt="Kochi" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kochi</h3><span class="text-xs text-white/80">KL · Queen of Sea</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Edakkal_Cave.jpg?width=1000"
+          alt="Wayanad" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Wayanad</h3><span class="text-xs text-white/80">KL · Green Trails</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Thekkady.jpg?width=1000"
+          alt="Thekkady" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Thekkady</h3><span class="text-xs text-white/80">KL · Wildlife</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Varkala_beach_from_above.jpg?width=1000"
+          alt="Varkala" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Varkala</h3><span class="text-xs text-white/80">KL · Cliff Beach</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kumarkom.jpg?width=1000"
+          alt="Kumarakom" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kumarakom</h3><span class="text-xs text-white/80">KL · Serene Waters</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/The_View_of_the_Athirapally_Falls_during_the_onset_of_Monsoon.jpg?width=1000"
+          alt="Athirappilly" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Athirappilly</h3><span class="text-xs text-white/80">KL · Waterfalls</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Vagamon_meadows.JPG?width=1000"
+          alt="Vagamon" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Vagamon</h3><span class="text-xs text-white/80">KL · Pine Forests</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kovalam_beach_trivandrum_kerala.jpg?width=1000"
+          alt="Kovalam" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kovalam</h3><span class="text-xs text-white/80">KL · Lighthouse Beach</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Bakel_Fort_Beach_Kasaragod7.jpg?width=1000"
+          alt="Bekal" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Bekal</h3><span class="text-xs text-white/80">KL · Historic Fort</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Guruvayoor_Temple_1.jpg?width=1000"
+          alt="Guruvayur" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Guruvayur</h3><span class="text-xs text-white/80">KL · Spiritual City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Sunrise_at_Munnar%2CKerala.jpg?width=1000"
+          alt="Idukki" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Idukki</h3><span class="text-xs text-white/80">KL · Nature Hub</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/SAN_BIRDS_48.jpg?width=1000"
+          alt="Silent Valley" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Silent Valley</h3><span class="text-xs text-white/80">KL · Rainforest</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_from_Mararikulam_beach%2C_Kerala%2C_India.jpg?width=1000"
+          alt="Marari" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Marari</h3><span class="text-xs text-white/80">KL · Quiet Beach</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Poovar_Kerala.jpg?width=1000"
+          alt="Poovar" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Poovar</h3><span class="text-xs text-white/80">KL · Floating Resots</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Morning_at_Ponmudi.jpg?width=1000"
+          alt="Ponmudi" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Ponmudi</h3><span class="text-xs text-white/80">KL · Golden Peak</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kudamatom_at_thrissur_pooram_2013_7618.JPG?width=1000"
+          alt="Thrissur" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Thrissur</h3><span class="text-xs text-white/80">KL · Pooram City</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kozhikode_beach_kites.jpg?width=1000"
+          alt="Kozhikode" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kozhikode</h3><span class="text-xs text-white/80">KL · Calicut</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kannur_Skyline_3.jpg?width=1000"
+          alt="Kannur" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Kannur</h3><span class="text-xs text-white/80">KL · Looms & Lore</span>
+        </div>
+      </a>
+
+      <!-- Karnataka -->
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Mysore_Palace_Morning.jpg?width=1000"
+          alt="Mysore" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Mysore</h3><span class="text-xs text-white/80">KA · Palaces</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Tadiandamol_Valley%2C_Western_Ghats.jpg?width=1000"
+          alt="Coorg" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Coorg</h3><span class="text-xs text-white/80">KA · Coffee Hills</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Wide_angle_of_Galigopuram_of_Virupaksha_Temple%2C_Hampi_%2804%29_%28cropped%29.jpg?width=1000"
+          alt="Hampi" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Hampi</h3><span class="text-xs text-white/80">KA · Heritage Site</span>
+        </div>
+      </a>
+      <a href="#booking" class="dest-card"><img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Main_entry_to_the_Mahabaleshwar_Temple_at_Gokaran.jpg?width=1000"
+          alt="Gokarna" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-fallback');">
+        <div class="dest-overlay"></div>
+        <div class="dest-label">
+          <h3 class="font-bold">Gokarna</h3><span class="text-xs text-white/80">KA · Pristine Beaches</span>
+        </div>
+      </a>
+    </div>
+    <div class="flex justify-center gap-3 mt-2">
+      <button type="button" id="destPrev" class="carousel-btn" aria-label="Previous destinations">&larr;</button>
+      <button type="button" id="destNext" class="carousel-btn" aria-label="Next destinations">&rarr;</button>
+    </div>
+    <div class="max-w-6xl mx-auto px-5 mt-10 reveal">
+      <img src="assets/img/destinations-collage.png" alt="Collage of popular destinations across Tamil Nadu, Kerala and Karnataka"
+        class="w-full h-auto rounded-3xl shadow-glow" loading="lazy"
+        onerror="this.style.display='none';" />
+    </div>
+  </section>
+
+  <!-- ============================ EXPERIENCE (stats) ============================ -->
+  <section class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-center text-3xl sm:text-4xl font-extrabold tracking-tight">Trusted On Every Trip</h2>
+    <div class="grid lg:grid-cols-2 gap-12 items-center mt-10">
+      <div class="grid grid-cols-3 gap-6 text-center">
+        <div class="reveal">
+          <div
+            class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-brand-600 to-jade-500 bg-clip-text text-transparent">12
+          </div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Years<br>experience</p>
+        </div>
+        <div class="reveal">
+          <div
+            class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-brand-600 to-jade-500 bg-clip-text text-transparent">
+            50k+</div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Happy<br>riders</p>
+        </div>
+        <div class="reveal">
+          <div
+            class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-brand-600 to-jade-500 bg-clip-text text-transparent">
+            650+</div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Destinations<br>covered</p>
+        </div>
+      </div>
+      <div class="about-imgs reveal">
+        <img src="assets/img/cars.png" alt="Toyota Rumion" class="about-img about-img-one"
+          onerror="this.classList.add('img-fallback'); this.removeAttribute('src');" />
+        <img src="assets/img/cars.png" alt="Toyota Rumion" class="about-img about-img-two"
+          onerror="this.classList.add('img-fallback'); this.removeAttribute('src');" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ BOOKING ============================ -->
+  <section id="booking" class="relative overflow-hidden py-14 sm:py-20 bg-slate-100/60 dark:bg-slate-900/40">
+    <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-jade-400/20 blur-3xl"></div>
+    <div class="relative max-w-5xl mx-auto px-5 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-jade-100 text-jade-700 dark:bg-jade-900/40 dark:text-jade-300">Booking</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">Reserve Your Car</h2>
+        <p class="mt-3 text-slate-500 dark:text-slate-400 max-w-md">Tap 📍 to pick the exact spot on the map, or just
+          type a village, town or landmark for pickup & drop — the exact point is filled in for you automatically.
+          Once you submit, the owner is notified and you'll get a confirmation on WhatsApp.</p>
+      </div>
+
+      <div
+        class="rounded-3xl bg-white dark:bg-slate-900 shadow-glow border border-slate-100 dark:border-slate-800 p-6 sm:p-8">
+        <form id="bookingForm" class="space-y-4" novalidate>
+          <div>
+            <label class="form-label" for="pickup">Pickup point</label>
+            <div class="relative flex gap-2">
+              <input id="pickup" required placeholder="Village, town or address" class="form-input" autocomplete="off" />
+              <button type="button" class="map-pick-btn" data-target="pickup" title="Pick on map">📍</button>
+              <ul id="pickupSuggest" class="map-results hidden"></ul>
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="drop">Drop point</label>
+            <div class="relative flex gap-2">
+              <input id="drop" required placeholder="Village, town or address" class="form-input" autocomplete="off" />
+              <button type="button" class="map-pick-btn" data-target="drop" title="Pick on map">📍</button>
+              <ul id="dropSuggest" class="map-results hidden"></ul>
+            </div>
+          </div>
+
+          <a id="mapLink" href="#" target="_blank" rel="noopener"
+            class="hidden items-center gap-2 text-sm font-semibold text-brand-600 dark:text-brand-300 hover:underline">
+            🗺️ View route on Google Maps
+          </a>
+
+          <div>
+            <label class="form-label" for="car">Car</label>
+            <select id="car" class="form-input"></select>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="form-label" for="dateFrom">📅 Travel date — From</label>
+              <input type="date" id="dateFrom" required class="form-input date-input" />
+            </div>
+            <div>
+              <label class="form-label" for="dateTo">📅 Travel date — To</label>
+              <input type="date" id="dateTo" required class="form-input date-input" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="form-label" for="passengers">Passengers</label><input type="number" id="passengers"
+                min="1" max="8" value="2" required class="form-input" /></div>
+            <div><label class="form-label" for="name">Your name</label><input type="text" id="name" required
+                placeholder="Full name" class="form-input" /></div>
+          </div>
+          <div>
+            <label class="form-label" for="phone">WhatsApp number</label>
+            <input type="tel" id="phone" required placeholder="e.g. 919876543210" pattern="[0-9]{10,15}"
+              class="form-input" />
+            <p class="text-xs text-slate-400 mt-1">Include country code, digits only (no + or spaces).</p>
+          </div>
+
+          <button type="submit" id="submitBtn"
+            class="w-full mt-2 flex items-center justify-center gap-2 rounded-xl py-3.5 font-semibold text-white bg-gradient-to-r from-brand-600 to-jade-500 hover:opacity-95 active:scale-[.99] shadow-glow transition disabled:opacity-60 disabled:cursor-not-allowed">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z" />
+            </svg>
+            <span id="btnText">Confirm & send on WhatsApp</span>
+            <span id="btnSpinner" class="hidden spinner"></span>
+          </button>
+          <p id="formError" class="hidden text-sm text-red-500 font-medium text-center"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SUBSCRIBE / CTA ============================ -->
+  <section class="max-w-6xl mx-auto px-5 py-16">
+    <div
+      class="subscribe-bg rounded-3xl px-6 sm:px-12 py-16 text-center text-white shadow-glow">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight hero-copy-shadow">Get Trip Offers & Updates</h2>
+      <p class="mt-3 text-white max-w-xl mx-auto hero-copy-shadow">Subscribe for seasonal discounts on popular routes. No spam — just
+        good deals.</p>
+      <form id="subscribeForm" class="mt-7 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" required placeholder="Enter your email"
+          class="flex-1 rounded-xl px-4 py-3 text-slate-800 outline-none" />
+        <button
+          class="rounded-xl px-6 py-3 font-semibold bg-slate-900 text-white hover:bg-slate-800 transition">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section id="contact" class="max-w-6xl mx-auto px-5 py-16">
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+      <div>
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">Contact</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">Get In Touch</h2>
+        <p class="mt-3 text-slate-500 dark:text-slate-400">Questions about a route, fare or big-group booking? We reply
+          fast.</p>
+        <ul class="mt-6 space-y-4">
+          <li class="flex items-center gap-3"><span
+              class="grid place-items-center w-10 h-10 rounded-xl bg-jade-100 dark:bg-jade-900/40">👤</span>
+            <div>
+              <p class="text-xs text-slate-400">Proprietor</p>
+              <p class="font-medium">D. Chandrabose</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-3"><span
+              class="grid place-items-center w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/40">📞</span>
+            <div>
+              <p class="text-xs text-slate-400">Call / WhatsApp</p><a id="phoneLink" href="#"
+                class="font-medium hover:text-brand-600">+91 96882 11890</a>
+            </div>
+          </li>
+          <li class="flex items-center gap-3"><span
+              class="grid place-items-center w-10 h-10 rounded-xl bg-jade-100 dark:bg-jade-900/40">📧</span>
+            <div>
+              <p class="text-xs text-slate-400">Email</p><a href="mailto:chandrabose9688211890@gmail.com"
+                class="font-medium hover:text-brand-600">chandrabose9688211890@gmail.com</a>
+            </div>
+          </li>
+          <li class="flex items-center gap-3"><span
+              class="grid place-items-center w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/40">📍</span>
+            <div>
+              <p class="text-xs text-slate-400">Office</p>
+              <p class="font-medium">1/121, Kathakinaru, Kathakinaru Post, Madurai North, Madurai - 625107</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="rounded-3xl bg-white dark:bg-slate-900 shadow-glow border border-slate-100 dark:border-slate-800 p-6 sm:p-8">
+        <h3 class="text-xl font-bold">Send a message</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">It opens WhatsApp with your message ready to send.
+        </p>
+        <form id="contactForm" class="space-y-4">
+          <div><label class="form-label" for="cName">Name</label><input id="cName" required class="form-input"
+              placeholder="Your name" /></div>
+          <div><label class="form-label" for="cMsg">Message</label><textarea id="cMsg" required rows="4"
+              class="form-input resize-none" placeholder="How can we help?"></textarea></div>
+          <button type="submit"
+            class="w-full rounded-xl py-3.5 font-semibold text-white bg-gradient-to-r from-brand-600 to-jade-500 shadow-glow hover:opacity-95 transition">Send
+            via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-slate-900 text-slate-300">
+    <div class="max-w-6xl mx-auto px-5 py-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <h3 class="text-white flex items-center gap-3"><span
+            class="logo-badge"><svg class="logo-car" viewBox="0 0 64 44" aria-hidden="true">
+            <g class="logo-streaks" stroke-linecap="round">
+              <path d="M5 4v7M11 10v9M53 10v9M59 4v7" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M2 16v6M62 16v6" stroke="#a78bfa" stroke-width="2"/>
+            </g>
+            <ellipse cx="32" cy="41" rx="26" ry="2.500" fill="#0f172a" opacity=".25"/>
+            <g class="logo-car-body">
+              <rect x="3" y="24" width="9" height="15" rx="3" fill="#111827"/>
+              <rect x="52" y="24" width="9" height="15" rx="3" fill="#111827"/>
+              <path class="logo-tread" d="M4.500 28h6M4.500 32h6M4.500 36h6M53.500 28h6M53.500 32h6M53.500 36h6" stroke="#f59e0b" stroke-width="1.300"/>
+              <path d="M18 16c2-4 6-6 14-6s12 2 14 6l2 6H16z" fill="#dc2626"/>
+              <path d="M21 16c1.500-2.500 5-4 11-4s9.500 1.500 11 4l1 4H20z" fill="#38bdf8"/>
+              <path d="M24 14l4 6M40 14l-4 6" stroke="#fff" stroke-width="1.200" opacity=".7"/>
+              <path d="M10 22h44c3 0 5 2 5 5v4c0 2-1 3-3 3H8c-2 0-3-1-3-3v-4c0-3 2-5 5-5z" fill="#ef4444"/>
+              <path d="M28 22h8v14h-8z" fill="#fbbf24"/>
+              <path d="M30 22h1v14h-1zM33 22h1v14h-1z" fill="#fff" opacity=".8"/>
+              <rect class="logo-light" x="10" y="25" width="12" height="6" rx="3" fill="#fef9c3" stroke="#f97316" stroke-width="1.200"/>
+              <rect class="logo-light" x="42" y="25" width="12" height="6" rx="3" fill="#fef9c3" stroke="#f97316" stroke-width="1.200"/>
+              <rect x="23" y="32" width="18" height="4" rx="1.500" fill="#1f2937"/>
+              <path d="M25 34h14" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 1.500"/>
+              <rect x="1" y="37" width="62" height="4" rx="2" fill="#7c3aed"/>
+              <rect x="1" y="37" width="62" height="1.300" rx=".6" fill="#c4b5fd"/>
+            </g>
+          </svg></span>
+          <span class="logo-text">Gurudev Travels</span></h3>
+        <p class="mt-3 text-sm text-slate-400">You choose the destination, we offer you the comfortable Innova
+          experience.</p>
+        <div class="mt-4 flex gap-4 text-2xl">
+          <a href="https://wa.me/919688211890" class="hover:text-white" title="WhatsApp">💬</a>
+          <a href="#" class="hover:text-white" title="Instagram">📸</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold">Company</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#about" class="hover:text-white">About us</a></li>
+          <li><a href="#fleet" class="hover:text-white">Our fleet</a></li>
+          <li><a href="#discover" class="hover:text-white">Destinations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold">Support</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#booking" class="hover:text-white">Book a cab</a></li>
+          <li><a href="#contact" class="hover:text-white">Contact us</a></li>
+          <li><a href="#" class="hover:text-white">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold">Get in touch</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>👤 D. Chandrabose</li>
+          <li>📞 +91 96882 11890</li>
+          <li>📧 chandrabose9688211890@gmail.com</li>
+          <li>📍 1/121, Kathakinaru, Kathakinaru Post, Madurai North, Madurai - 625107</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800">
+      <div
+        class="max-w-6xl mx-auto px-5 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-slate-400">
+        <p>© <span id="year"></span> Gurudev Travels. All rights reserved.</p>
+        <div class="flex gap-5"><a href="#" class="hover:text-white">Terms</a><a href="#"
+            class="hover:text-white">Privacy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scroll up -->
+  <a href="#home" class="scrollup" aria-label="Scroll up">↑</a>
+
+  <!-- ===== MAP PICKER MODAL ===== -->
+  <div id="mapModal" class="hidden fixed inset-0 z-50 grid place-items-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div
+      class="modal-pop w-full max-w-2xl max-h-[90svh] overflow-y-auto rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-2xl">
+      <div class="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800">
+        <h3 id="mapModalTitle" class="font-bold text-lg">Select location</h3>
+        <button id="mapClose"
+          class="grid place-items-center w-9 h-9 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition text-xl">✕</button>
+      </div>
+      <div class="p-4 space-y-3">
+        <div class="relative">
+          <input id="mapSearch" placeholder="🔍 Search a place, village or landmark…" class="form-input"
+            autocomplete="off" />
+          <ul id="mapResults" class="map-results hidden"></ul>
+        </div>
+        <button type="button" id="mapUseLocation"
+          class="text-xs font-semibold text-brand-600 dark:text-brand-300 hover:underline">📍 Use my current
+          location</button>
+        <div id="mapCanvas" class="map-canvas rounded-xl"></div>
+        <p class="text-xs text-slate-400">Tap anywhere on the map, drag the pin, or search above to set the exact spot.
+          Maps by OpenStreetMap.</p>
+        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/60 p-3 text-sm">
+          <span class="text-slate-400">Selected:</span> <span id="mapPickedAddr" class="font-medium">—</span>
+        </div>
+        <button id="mapConfirm"
+          class="w-full rounded-xl py-3 font-semibold text-white bg-gradient-to-r from-brand-600 to-jade-500 shadow-glow hover:opacity-95 transition disabled:opacity-60"
+          disabled>Use this location</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SUCCESS MODAL ===== -->
+  <div id="successModal" class="hidden fixed inset-0 z-50 grid place-items-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div
+      class="modal-pop w-full max-w-md max-h-[90svh] overflow-y-auto rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-2xl p-6 sm:p-7 text-center">
+      <div class="mx-auto w-20 h-20 grid place-items-center rounded-full bg-jade-100 dark:bg-jade-900/40">
+        <svg class="checkmark w-12 h-12 text-jade-500" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="24" fill="none" />
+          <path class="checkmark-check" fill="none" d="M14 27l8 8 16-16" />
+        </svg>
+      </div>
+      <h3 class="mt-5 text-2xl font-extrabold">Booking confirmed! 🎉</h3>
+      <p id="successNote" class="mt-2 text-slate-500 dark:text-slate-400">The cab owner has been notified on WhatsApp.
+        Send the customer their confirmation below.</p>
+      <div id="modalSummary"
+        class="mt-5 text-left text-sm rounded-2xl bg-slate-50 dark:bg-slate-800/60 p-4 space-y-1.5"></div>
+
+      <a id="waOwnerBtn" href="#" target="_blank" rel="noopener"
+        class="mt-5 w-full flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-white bg-[#25D366] hover:brightness-95 transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z" />
+        </svg>
+        📩 Notify cab owner
+      </a>
+      <a id="waCustomerBtn" href="#" target="_blank" rel="noopener"
+        class="mt-3 w-full flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-white bg-brand-600 hover:brightness-95 transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z" />
+        </svg>
+        ✅ Send confirmation to customer
+      </a>
+      <button id="closeModal"
+        class="mt-3 w-full rounded-xl py-3 font-medium text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Done</button>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
