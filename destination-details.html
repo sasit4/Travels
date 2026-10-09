@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Destination Details</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .details-hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 7%;
+
+            background-size: cover;
+            background-position: center;
+
+            overflow: hidden;
+        }
+
+
+        .details-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.88),
+                    rgba(0,0,0,0.55),
+                    rgba(0,0,0,0.20)
+                );
+
+            z-index: 0;
+        }
+
+
+        .details-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 180px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    #080808
+                );
+
+            z-index: 1;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-btn {
+
+            position: absolute;
+
+            top: 30px;
+            left: 7%;
+
+            z-index: 5;
+
+            padding: 12px 20px;
+
+            border: 1px solid rgba(255,255,255,0.3);
+
+            border-radius: 30px;
+
+            color: white;
+
+            text-decoration: none;
+
+            background: rgba(255,255,255,0.10);
+
+            backdrop-filter: blur(12px);
+
+            transition: 0.3s ease;
+        }
+
+
+        .back-btn:hover {
+
+            background: rgba(255,255,255,0.22);
+
+            transform: translateX(-4px);
+        }
+
+
+        /* =========================
+           HERO CONTENT
+        ========================= */
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 3;
+
+            max-width: 750px;
+        }
+
+
+        .hero-tag {
+
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.12);
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero-content h1 {
+
+            font-size: clamp(55px, 9vw, 120px);
+
+            line-height: 0.95;
+
+            margin-bottom: 25px;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+            text-shadow:
+                0 10px 40px rgba(0,0,0,0.6);
+        }
+
+
+        .hero-content p {
+
+            max-width: 650px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: rgba(255,255,255,0.85);
+        }
+
+
+        /* =========================
+           QUICK INFO
+        ========================= */
+
+        .quick-info {
+
+            position: absolute;
+
+            right: 7%;
+            bottom: 90px;
+
+            z-index: 4;
+
+            width: 330px;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background: rgba(255,255,255,0.10);
+
+            border: 1px solid rgba(255,255,255,0.20);
+
+            backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.35);
+        }
+
+
+        .quick-info h3 {
+
+            margin-bottom: 18px;
+
+            font-size: 18px;
+        }
+
+
+        .info-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+
+            font-size: 14px;
+        }
+
+
+        .info-row:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .info-row span:first-child {
+
+            color: rgba(255,255,255,0.55);
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .details-content {
+
+            padding: 100px 7%;
+        }
+
+
+        .section-title {
+
+            max-width: 750px;
+
+            margin-bottom: 50px;
+        }
+
+
+        .section-title span {
+
+            color: #a855f7;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+
+        .section-title h2 {
+
+            font-size: clamp(35px, 5vw, 60px);
+
+            margin-top: 12px;
+
+            line-height: 1.1;
+        }
+
+
+        .section-title p {
+
+            margin-top: 20px;
+
+            color: rgba(255,255,255,0.65);
+
+            line-height: 1.8;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FAMOUS PLACES
+        ========================= */
+
+        .places-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .place-card {
+
+            min-height: 330px;
+
+            padding: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background-size: cover;
+
+            background-position: center;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+
+        .place-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 25%,
+                    rgba(0,0,0,0.90)
+                );
+        }
+
+
+        .place-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 25px 50px rgba(0,0,0,0.45);
+        }
+
+
+        .place-card-content {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .place-card h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .place-card p {
+
+            color: rgba(255,255,255,0.70);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           EXPERIENCE
+        ========================= */
+
+        .experience-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+            margin-top: 40px;
+        }
+
+
+        .experience-card {
+
+            padding: 35px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.10),
+                    rgba(255,255,255,0.03)
+                );
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            transition: 0.4s ease;
+        }
+
+
+        .experience-card:hover {
+
+            transform: translateY(-8px);
+
+            border-color:
+                rgba(168,85,247,0.5);
+        }
+
+
+        .experience-icon {
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .experience-card h3 {
+
+            margin-bottom: 12px;
+
+            font-size: 20px;
+        }
+
+
+        .experience-card p {
+
+            color: rgba(255,255,255,0.62);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TRAVEL TIPS
+        ========================= */
+
+        .tips-box {
+
+            margin-top: 100px;
+
+            padding: 45px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(168,85,247,0.16),
+                    rgba(255,255,255,0.04)
+                );
+
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+
+        .tips-box h2 {
+
+            margin-bottom: 25px;
+
+            font-size: 35px;
+        }
+
+
+        .tips-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .tip {
+
+            padding: 15px 18px;
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.06);
+
+            color: rgba(255,255,255,0.75);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            padding: 35px 7%;
+
+            text-align: center;
+
+            color: rgba(255,255,255,0.45);
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .quick-info {
+
+                position: relative;
+
+                right: auto;
+                bottom: auto;
+
+                margin-top: 40px;
+
+                width: 100%;
+
+                max-width: 500px;
+            }
+
+
+            .details-hero {
+
+                padding-top: 130px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .places-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .experience-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .details-hero {
+
+                padding:
+                    120px 20px 70px;
+            }
+
+
+            .back-btn {
+
+                left: 20px;
+
+                top: 25px;
+            }
+
+
+            .hero-content h1 {
+
+                font-size: 58px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .hero-content p {
+
+                font-size: 15px;
+
+                line-height: 1.7;
+            }
+
+
+            .quick-info {
+
+                padding: 20px;
+            }
+
+
+            .details-content {
+
+                padding:
+                    70px 20px;
+            }
+
+
+            .places-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .experience-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .tips-box {
+
+                padding: 25px;
+            }
+
+
+            .tips-list {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- HERO -->
+
+    <section
+        class="details-hero"
+        id="detailsHero"
+    >
+
+        <a
+            href="index.html"
+            class="back-btn"
+        >
+            ← Back to Destinations
+        </a>
+
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                EXPLORE TAMIL NADU
+            </span>
+
+
+            <h1 id="placeTitle">
+                Madurai
+            </h1>
+
+
+            <p id="placeDescription">
+                Discover the beauty, culture and unforgettable
+                experiences of this wonderful destination.
+            </p>
+
+        </div>
+
+
+        <div class="quick-info">
+
+            <h3>
+                Travel Information
+            </h3>
+
+
+            <div class="info-row">
+
+                <span>
+                    Best Time
+                </span>
+
+                <strong id="bestTime">
+                    October - March
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Experience
+                </span>
+
+                <strong id="experience">
+                    Culture
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Ideal For
+                </span>
+
+                <strong id="idealFor">
+                    Family & Friends
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Location
+                </span>
+
+                <strong id="location">
+                    Tamil Nadu
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ABOUT -->
+
+    <section class="details-content">
+
+        <div class="section-title">
+
+            <span>
+                ABOUT THE DESTINATION
+            </span>
+
+            <h2 id="aboutTitle">
+                Discover Madurai
+            </h2>
+
+            <p id="aboutText">
+                Madurai is a beautiful destination known for
+                its history, culture, architecture and
+                unforgettable travel experiences.
+            </p>
+
+        </div>
+
+
+
+        <!-- FAMOUS PLACES -->
+
+        <div class="section-title">
+
+            <span>
+                MUST VISIT
+            </span>
+
+            <h2>
+                Famous Places
+            </h2>
+
+        </div>
+
+
+        <div
+            class="places-grid"
+            id="placesGrid"
+        >
+        </div>
+
+
+
+        <!-- EXPERIENCE -->
+
+        <div
+            class="section-title"
+            style="margin-top:100px;"
+        >
+
+            <span>
+                TRAVEL EXPERIENCE
+            </span>
+
+            <h2>
+                Things To Experience
+            </h2>
+
+        </div>
+
+
+        <div
+            class="experience-grid"
+            id="experienceGrid"
+        >
+        </div>
+
+
+
+        <!-- TRAVEL TIPS -->
+
+        <div class="tips-box">
+
+            <h2>
+                Travel Tips
+            </h2>
+
+
+            <div
+                class="tips-list"
+                id="tipsList"
+            >
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer>
+
+        © 2026 Travel Website · Explore More · Travel More
+
+    </footer>
+
+
+
+    <script>
+
+        /* ==========================================
+           DESTINATION DETAILS DATA
+        ========================================== */
+
+
+        const destinationDetails = {
+
+            "Ooty": {
+
+                image:
+                    "https://www.clubmahindra.com/blog/media/section_images/ultimate-o-8ac88a2da056a3d.jpg",
+
+                description:
+                    "Escape into misty hills, peaceful lakes and beautiful tea gardens surrounded by nature.",
+
+                bestTime:
+                    "October - June",
+
+                experience:
+                    "Nature",
+
+                idealFor:
+                    "Family & Couples",
+
+                location:
+                    "Nilgiris, Tamil Nadu",
+
+                about:
+                    "Ooty is a beautiful hill station surrounded by green mountains, tea gardens, peaceful lakes and cool weather.",
+
+                places: [
+
+                    {
+                        name: "Ooty Lake",
+                        text: "Enjoy peaceful boating and beautiful views.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Doddabetta Peak",
+                        text: "Enjoy panoramic views of the Nilgiri hills.",
+                        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Tea Gardens",
+                        text: "Walk through beautiful green tea plantations.",
+                        image: "https://images.unsplash.com/photo-1597318181409-cf64d0f5f7c0?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Botanical Garden",
+                        text: "Explore colourful plants and peaceful gardens.",
+                        image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🌿", "Nature Walks", "Enjoy peaceful walks surrounded by mountains and greenery."],
+
+                    ["🚤", "Boating", "Spend relaxing time near the beautiful Ooty Lake."],
+
+                    ["🍵", "Tea Experience", "Explore the famous tea gardens of the Nilgiris."]
+
+                ],
+
+                tips: [
+
+                    "Carry warm clothes because the weather can be cool.",
+
+                    "Start sightseeing early to avoid crowds.",
+
+                    "Try the famous Nilgiri tea.",
+
+                    "Keep your camera ready for scenic mountain views."
+
+                ]
+
+            },
+
+
+            "Kodaikanal": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Boating_in_Kodaikanal_Lake_with_Mist.jpg?width=1000",
+
+                description:
+                    "Discover cool mountain views, peaceful lakes and charming places surrounded by greenery.",
+
+                bestTime:
+                    "April - June",
+
+                experience:
+                    "Hill Station",
+
+                idealFor:
+                    "Couples & Family",
+
+                location:
+                    "Dindigul, Tamil Nadu",
+
+                about:
+                    "Kodaikanal is a peaceful hill station famous for its lake, misty mountains, waterfalls and beautiful viewpoints.",
+
+                places: [
+
+                    {
+                        name: "Kodaikanal Lake",
+                        text: "Enjoy boating and peaceful views around the lake.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Coaker's Walk",
+                        text: "Enjoy beautiful valley views from this scenic walkway.",
+                        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Pillar Rocks",
+                        text: "See the famous tall rock formations surrounded by mist.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Silver Cascade",
+                        text: "Visit one of the popular waterfalls near Kodaikanal.",
+                        image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🏔️", "Mountain Views", "Enjoy beautiful landscapes and misty mountain scenery."],
+
+                    ["🚲", "Cycling", "Explore the peaceful roads around the hill station."],
+
+                    ["💧", "Waterfalls", "Discover beautiful waterfalls surrounded by greenery."]
+
+                ],
+
+                tips: [
+
+                    "Carry a light jacket or sweater.",
+
+                    "Avoid driving too fast on hill roads.",
+
+                    "Visit viewpoints during clear weather.",
+
+                    "Keep comfortable shoes for walking."
+
+                ]
+
+            },
+
+
+            "Madurai": {
+
+                image:
+                    "https://www.tamilnadutemples.in/img/madurai-meenakshi/madurai-meenakshi-4.jpg",
+
+                description:
+                    "Experience ancient temples, rich culture and the vibrant traditional beauty of Tamil Nadu.",
+
+                bestTime:
+                    "October - March",
+
+                experience:
+                    "Culture & Heritage",
+
+                idealFor:
+                    "Family & History Lovers",
+
+                location:
+                    "Madurai, Tamil Nadu",
+
+                about:
+                    "Madurai is one of the most culturally rich cities in Tamil Nadu, famous for its historic temples, traditional food and vibrant heritage.",
+
+                places: [
+
+                    {
+                        name: "Meenakshi Amman Temple",
+                        text: "Explore the magnificent architecture and spiritual atmosphere of this iconic temple.",
+                        image: "https://images.unsplash.com/photo-1600100397608-f010f7c1f2a6?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Thirumalai Nayakkar Palace",
+                        text: "Discover impressive historic architecture and royal heritage.",
+                        image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Gandhi Memorial Museum",
+                        text: "Learn about Indian history and the life of Mahatma Gandhi.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Vaigai River",
+                        text: "Enjoy the local atmosphere around the historic Vaigai River.",
+                        image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🛕", "Temple Visit", "Experience the incredible architecture and culture of Madurai."],
+
+                    ["🍛", "Local Food", "Taste traditional Tamil food and famous Madurai specialities."],
+
+                    ["🎭", "Heritage", "Explore the history and traditions of one of Tamil Nadu's oldest cities."]
+
+                ],
+
+                tips: [
+
+                    "Wear comfortable clothes while visiting temples.",
+
+                    "Carry water because the weather can be warm.",
+
+                    "Try traditional Madurai food.",
+
+                    "Respect temple rules and photography restrictions."
+
+                ]
+
+            },
+
+
+            "Rameshwaram": {
+
+                image:
+                    "https://www.daiwikhotels.com/wp-content/uploads/2024/07/Rectangle-18262-3-2048x1262.jpg",
+
+                description:
+                    "Explore sacred temples, beautiful coastal views and one of Tamil Nadu's iconic destinations.",
+
+                bestTime:
+                    "October - April",
+
+                experience:
+                    "Spiritual & Beach",
+
+                idealFor:
+                    "Family & Pilgrims",
+
+                location:
+                    "Ramanathapuram, Tamil Nadu",
+
+                about:
+                    "Rameshwaram is a famous coastal destination known for its spiritual importance, beautiful beaches and historic landmarks.",
+
+                places: [
+
+                    {
+                        name: "Ramanathaswamy Temple",
+                        text: "Visit the famous temple known for its magnificent corridors.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Pamban Bridge",
+                        text: "Enjoy the spectacular sea views around the historic bridge.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Dhanushkodi",
+                        text: "Explore the fascinating coastal landscape of Dhanushkodi.",
+                        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Ariyaman Beach",
+                        text: "Relax beside the peaceful coastal waters.",
+                        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🌊", "Beach Time", "Enjoy peaceful coastal views and sea breeze."],
+
+                    ["🛕", "Spiritual Journey", "Explore the famous temples and spiritual landmarks."],
+
+                    ["🚗", "Road Trip", "Enjoy the scenic journey across the Pamban region."]
+
+                ],
+
+                tips: [
+
+                    "Carry sun protection and water.",
+
+                    "Visit temples early in the morning.",
+
+                    "Check local conditions before visiting Dhanushkodi.",
+
+                    "Wear comfortable footwear."
+
+                ]
+
+            },
+
+
+            "Kanyakumari": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Vivekananda_Rock_Memorial%2C_Kanyakumari.jpg?width=1000",
+
+                description:
+                    "Enjoy stunning ocean views, beautiful sunsets and the unique meeting point of three seas.",
+
+                bestTime:
+                    "October - March",
+
+                experience:
+                    "Beach & Heritage",
+
+                idealFor:
+                    "Family & Couples",
+
+                location:
+                    "Kanyakumari, Tamil Nadu",
+
+                about:
+                    "Kanyakumari is the southernmost coastal destination of mainland India, famous for its ocean views, sunrise and sunset.",
+
+                places: [
+
+                    {
+                        name: "Vivekananda Rock Memorial",
+                        text: "Visit the iconic memorial located in the sea.",
+                        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Thiruvalluvar Statue",
+                        text: "See the magnificent statue standing beside the memorial.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Sunset Point",
+                        text: "Enjoy beautiful evening views over the ocean.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Kanyakumari Beach",
+                        text: "Relax and enjoy the coastal atmosphere.",
+                        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🌅", "Sunset", "Watch beautiful sunsets over the meeting point of the seas."],
+
+                    ["🌊", "Ocean Views", "Enjoy the unique coastal landscape of Kanyakumari."],
+
+                    ["⛵", "Boat Ride", "Take a boat ride towards the famous rock memorial."]
+
+                ],
+
+                tips: [
+
+                    "Reach the sunrise point early.",
+
+                    "Carry sunglasses and sunscreen.",
+
+                    "Keep some extra time for boat rides.",
+
+                    "Avoid visiting during heavy rain or rough sea conditions."
+
+                ]
+
+            },
+
+
+            "Yercaud": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Yercaud_lake.jpg?width=1000",
+
+                description:
+                    "Relax among green hills, peaceful lakes and scenic viewpoints in this beautiful hill station.",
+
+                bestTime:
+                    "October - June",
+
+                experience:
+                    "Nature & Hills",
+
+                idealFor:
+                    "Family & Couples",
+
+                location:
+                    "Salem, Tamil Nadu",
+
+                about:
+                    "Yercaud is a peaceful hill station surrounded by coffee plantations, forests, viewpoints and a beautiful lake.",
+
+                places: [
+
+                    {
+                        name: "Yercaud Lake",
+                        text: "Enjoy boating and peaceful surroundings.",
+                        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Pagoda Point",
+                        text: "Enjoy panoramic views of the surrounding valleys.",
+                        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Lady's Seat",
+                        text: "Relax at one of Yercaud's famous viewpoints.",
+                        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Coffee Plantations",
+                        text: "Explore the green coffee-growing landscapes.",
+                        image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🌲", "Nature", "Enjoy fresh air and peaceful green surroundings."],
+
+                    ["☕", "Coffee", "Explore the famous coffee plantations of the region."],
+
+                    ["🏔️", "Viewpoints", "Enjoy beautiful valley and mountain views."]
+
+                ],
+
+                tips: [
+
+                    "Carry light warm clothes.",
+
+                    "Drive carefully on hill roads.",
+
+                    "Visit viewpoints during clear weather.",
+
+                    "Try locally grown coffee."
+
+                ]
+
+            },
+
+
+            "Thanjavur": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Brihadisvara_Temple_during_Maha_Shivaratri-WUS03611_%28edit%29.jpg?width=1000",
+
+                description:
+                    "Discover magnificent temples, traditional art and the rich cultural heritage of Tamil Nadu.",
+
+                bestTime:
+                    "October - March",
+
+                experience:
+                    "Heritage & Culture",
+
+                idealFor:
+                    "History Lovers",
+
+                location:
+                    "Thanjavur, Tamil Nadu",
+
+                about:
+                    "Thanjavur is a major cultural destination known for magnificent temples, classical art, music and traditional heritage.",
+
+                places: [
+
+                    {
+                        name: "Brihadeeswarar Temple",
+                        text: "Explore the magnificent Chola-era temple architecture.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Thanjavur Palace",
+                        text: "Discover the royal history and architecture of Thanjavur.",
+                        image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Saraswathi Mahal Library",
+                        text: "Explore an important centre of traditional manuscripts and knowledge.",
+                        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Art & Handicrafts",
+                        text: "Discover famous traditional Thanjavur artistic work.",
+                        image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988f5?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🛕", "Temple Heritage", "Explore magnificent Chola architecture."],
+
+                    ["🎨", "Traditional Art", "Discover the famous artistic traditions of Thanjavur."],
+
+                    ["📜", "History", "Learn about the rich cultural history of the region."]
+
+                ],
+
+                tips: [
+
+                    "Wear comfortable clothes for temple visits.",
+
+                    "Start sightseeing early.",
+
+                    "Respect heritage-site rules.",
+
+                    "Carry water during outdoor sightseeing."
+
+                ]
+
+            },
+
+
+            "Coimbatore": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Adiyogi_Shiva_steel_burst_2018.jpg?width=1000",
+
+                description:
+                    "Explore waterfalls, temples, greenery and the beautiful natural surroundings of Coimbatore.",
+
+                bestTime:
+                    "September - March",
+
+                experience:
+                    "Nature & City",
+
+                idealFor:
+                    "Family & Friends",
+
+                location:
+                    "Coimbatore, Tamil Nadu",
+
+                about:
+                    "Coimbatore is a vibrant city surrounded by beautiful mountains, waterfalls, temples and natural attractions.",
+
+                places: [
+
+                    {
+                        name: "Adiyogi",
+                        text: "Visit the famous giant Adiyogi statue near the foothills.",
+                        image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Marudamalai Temple",
+                        text: "Explore the famous hill temple surrounded by nature.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Siruvani",
+                        text: "Enjoy the scenic natural surroundings of the Siruvani region.",
+                        image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Valparai",
+                        text: "Explore tea estates and beautiful mountain landscapes.",
+                        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🌄", "Mountain Trip", "Explore scenic mountain roads and landscapes."],
+
+                    ["🌿", "Nature", "Enjoy waterfalls and green surroundings."],
+
+                    ["🛕", "Temples", "Visit famous temples surrounded by nature."]
+
+                ],
+
+                tips: [
+
+                    "Plan extra time for mountain trips.",
+
+                    "Carry comfortable shoes.",
+
+                    "Check weather before visiting waterfalls.",
+
+                    "Keep water with you during sightseeing."
+
+                ]
+
+            },
+
+
+            "Trichy": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Rock_Fortress_-_Tiruchirappalli_-_India.JPG?width=1000",
+
+                description:
+                    "Visit historic temples, magnificent rock formations and fascinating cultural landmarks.",
+
+                bestTime:
+                    "October - March",
+
+                experience:
+                    "History & Culture",
+
+                idealFor:
+                    "Family & History Lovers",
+
+                location:
+                    "Tiruchirappalli, Tamil Nadu",
+
+                about:
+                    "Trichy is a historic city known for its rock fort, ancient temples and important cultural landmarks.",
+
+                places: [
+
+                    {
+                        name: "Rockfort Temple",
+                        text: "Climb the historic rock and enjoy city views.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Sri Ranganathaswamy Temple",
+                        text: "Explore the magnificent temple complex at Srirangam.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Kallanai",
+                        text: "Visit the historic Grand Anicut across the Cauvery River.",
+                        image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Srirangam",
+                        text: "Discover the historic island town and its cultural heritage.",
+                        image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🛕", "Temple Tour", "Explore famous temples and historic architecture."],
+
+                    ["🏛️", "Heritage", "Discover the rich history of Trichy."],
+
+                    ["🌊", "River Views", "Enjoy scenic views around the Cauvery region."]
+
+                ],
+
+                tips: [
+
+                    "Wear comfortable footwear for temple visits.",
+
+                    "Start early when visiting multiple attractions.",
+
+                    "Carry water during outdoor sightseeing.",
+
+                    "Respect temple rules."
+
+                ]
+
+            },
+
+
+            "Velankanni": {
+
+                image:
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/Velankanni_Church_2026.jpg?width=1000",
+
+                description:
+                    "Experience a peaceful coastal destination known for its famous church and spiritual atmosphere.",
+
+                bestTime:
+                    "August - February",
+
+                experience:
+                    "Spiritual & Coastal",
+
+                idealFor:
+                    "Family & Pilgrims",
+
+                location:
+                    "Nagapattinam, Tamil Nadu",
+
+                about:
+                    "Velankanni is a peaceful coastal destination famous for its Basilica, spiritual importance and nearby beaches.",
+
+                places: [
+
+                    {
+                        name: "Velankanni Basilica",
+                        text: "Visit the famous Basilica and experience its peaceful atmosphere.",
+                        image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Velankanni Beach",
+                        text: "Relax and enjoy the peaceful coastal surroundings.",
+                        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Nagapattinam",
+                        text: "Explore nearby coastal attractions and local culture.",
+                        image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Local Streets",
+                        text: "Experience the local atmosphere around the pilgrimage town.",
+                        image: "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["⛪", "Spiritual Visit", "Experience the peaceful atmosphere of the Basilica."],
+
+                    ["🌊", "Beach", "Relax near the beautiful coastal area."],
+
+                    ["🚶", "Local Explore", "Walk around the town and discover its local atmosphere."]
+
+                ],
+
+                tips: [
+
+                    "Dress respectfully when visiting religious places.",
+
+                    "Avoid peak crowds if you prefer a peaceful visit.",
+
+                    "Carry water during outdoor sightseeing.",
+
+                    "Keep important belongings safe in crowded areas."
+
+                ]
+
+            },
+
+
+            "Chennai": {
+
+                image:
+                    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1600&q=85",
+
+                description:
+                    "Experience beaches, culture, food, shopping and the vibrant city life of Tamil Nadu's capital.",
+
+                bestTime:
+                    "November - February",
+
+                experience:
+                    "City & Beach",
+
+                idealFor:
+                    "Family & Friends",
+
+                location:
+                    "Chennai, Tamil Nadu",
+
+                about:
+                    "Chennai is a vibrant coastal city known for Marina Beach, temples, cultural attractions, shopping and delicious South Indian food.",
+
+                places: [
+
+                    {
+                        name: "Marina Beach",
+                        text: "Enjoy one of India's famous urban beaches.",
+                        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Kapaleeshwarar Temple",
+                        text: "Explore beautiful traditional Dravidian architecture.",
+                        image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Fort St. George",
+                        text: "Discover an important historic landmark of Chennai.",
+                        image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80"
+                    },
+
+                    {
+                        name: "Mylapore",
+                        text: "Explore traditional streets, temples and local culture.",
+                        image: "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=900&q=80"
+                    }
+
+                ],
+
+                experiences: [
+
+                    ["🌊", "Beach", "Enjoy the beautiful Chennai coastline."],
+
+                    ["🍛", "Food", "Taste traditional South Indian food and Chennai specialities."],
+
+                    ["🛍️", "Shopping", "Explore markets, shopping streets and modern malls."]
+
+                ],
+
+                tips: [
+
+                    "Avoid travelling during peak traffic hours.",
+
+                    "Carry water because Chennai can be hot.",
+
+                    "Use comfortable footwear for sightseeing.",
+
+                    "Visit beaches during morning or evening."
+
+                ]
+
+            }
+
+        };
+
+
+
+        /* ==========================================
+           GET SELECTED DESTINATION
+        ========================================== */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const place =
+            params.get("place") || "Madurai";
+
+
+        const destination =
+            destinationDetails[place] ||
+            destinationDetails["Madurai"];
+
+
+
+        /* ==========================================
+           UPDATE HERO
+        ========================================== */
+
+        document.getElementById("detailsHero")
+            .style.backgroundImage =
+            `url("${destination.image}")`;
+
+
+        document.getElementById("placeTitle")
+            .textContent =
+            place;
+
+
+        document.getElementById("placeDescription")
+            .textContent =
+            destination.description;
+
+
+
+        /* ==========================================
+           QUICK INFORMATION
+        ========================================== */
+
+        document.getElementById("bestTime")
+            .textContent =
+            destination.bestTime;
+
+
+        document.getElementById("experience")
+            .textContent =
+            destination.experience;
+
+
+        document.getElementById("idealFor")
+            .textContent =
+            destination.idealFor;
+
+
+        document.getElementById("location")
+            .textContent =
+            destination.location;
+
+
+
+        /* ==========================================
+           ABOUT
+        ========================================== */
+
+        document.getElementById("aboutTitle")
+            .textContent =
+            `Discover ${place}`;
+
+
+        document.getElementById("aboutText")
+            .textContent =
+            destination.about;
+
+
+
+        /* ==========================================
+           FAMOUS PLACES
+        ========================================== */
+
+        const placesGrid =
+            document.getElementById("placesGrid");
+
+
+        destination.places.forEach(
+            function(placeData) {
+
+                placesGrid.innerHTML += `
+
+                    <div
+                        class="place-card"
+                        style="background-image:
+                        url('${placeData.image}')"
+                    >
+
+                        <div class="place-card-content">
+
+                            <h3>
+                                ${placeData.name}
+                            </h3>
+
+                            <p>
+                                ${placeData.text}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+
+        /* ==========================================
+           EXPERIENCES
+        ========================================== */
+
+        const experienceGrid =
+            document.getElementById("experienceGrid");
+
+
+        destination.experiences.forEach(
+            function(item) {
+
+                experienceGrid.innerHTML += `
+
+                    <div class="experience-card">
+
+                        <div class="experience-icon">
+                            ${item[0]}
+                        </div>
+
+                        <h3>
+                            ${item[1]}
+                        </h3>
+
+                        <p>
+                            ${item[2]}
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+
+        /* ==========================================
+           TRAVEL TIPS
+        ========================================== */
+
+        const tipsList =
+            document.getElementById("tipsList");
+
+
+        destination.tips.forEach(
+            function(tip) {
+
+                tipsList.innerHTML += `
+
+                    <div class="tip">
+                        ✓ ${tip}
+                    </div>
+
+                `;
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
